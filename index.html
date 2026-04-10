@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete After I Die — Your Secrets Die With You</title>
+<meta name="description" content="A dead man's switch for your digital life. Your dating apps, DMs, emails, photos, files, and browser history — deleted automatically if you stop checking in.">
+<meta property="og:title" content="Delete After I Die">
+<meta property="og:description" content="Your secrets die with you. The dead man's switch for your digital life.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deleteafteridie.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #050507;
+    --surface: #0C0C10;
+    --surface-2: #131318;
+    --border: #1E1E26;
+    --bone: #E8E4DE;
+    --bone-dim: #8A8680;
+    --red: #C83A3A;
+    --red-glow: rgba(200, 58, 58, 0.3);
+    --red-deep: #8B1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--black);
+    color: var(--bone);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 18px 24px;
+    background: rgba(5,5,7,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(30,30,38,0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover { background: #a82e2e; box-shadow: 0 0 24px var(--red-glow); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(200,58,58,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 12vw, 140px);
+    line-height: 0.9;
+    letter-spacing: -1px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero h1 .line-red { color: var(--red); }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 560px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { background: #a82e2e; box-shadow: 0 0 40px var(--red-glow); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--bone);
+    border: 1px solid var(--border);
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover { border-color: var(--bone-dim); background: rgba(255,255,255,0.03); }
+
+  .hero-note {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--bone-dim);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .hero-note strong { color: var(--red); font-weight: 600; }
+
+  /* ─── SCROLL TICKER ─── */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    animation: scroll 30s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--bone-dim);
+    padding: 0 32px;
+  }
+
+  .ticker-item span { color: var(--red); }
+
+  /* ─── HOW IT WORKS ─── */
+  .section {
+    padding: 100px 24px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1;
+    margin-bottom: 56px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .step:hover { border-color: var(--red); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--red);
+    opacity: 0.3;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+  }
+
+  .step h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .step p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--bone-dim);
+    font-weight: 300;
+  }
+
+  /* ─── WHAT IT DELETES ─── */
+  .deletes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .delete-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.2s;
+  }
+
+  .delete-item:hover { border-color: #333; }
+
+  .delete-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .delete-item .name {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .delete-item .type {
+    font-size: 12px;
+    color: var(--bone-dim);
+    margin-top: 2px;
+  }
+
+  .coming-soon {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 24px;
+    color: var(--bone-dim);
+    font-size: 14px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    margin-top: 8px;
+  }
+
+  /* ─── THE QUESTION ─── */
+  .question {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .question h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+
+  .question p {
+    font-size: 17px;
+    color: var(--bone-dim);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ─── PRICING ─── */
+  .pricing-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    padding: 48px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 200px;
+    background: radial-gradient(ellipse at 50% -20%, var(--red-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .pricing-badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .pricing-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  .pricing-price sup {
+    font-size: 32px;
+    top: -20px;
+    color: var(--bone-dim);
+  }
+
+  .pricing-term {
+    color: var(--bone-dim);
+    font-size: 15px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .pricing-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .pricing-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--bone);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--red);
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .pricing-features li:last-child { border: none; }
+
+  .pricing-cta {
+    width: 100%;
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    text-decoration: none;
+    display: block;
+  }
+
+  .pricing-cta:hover { background: #a82e2e; box-shadow: 0 0 40px var(--red-glow); }
+
+  .pricing-remaining {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--bone-dim);
+    position: relative;
+  }
+
+  .pricing-remaining strong { color: var(--red); }
+
+  /* ─── FAQ ─── */
+  .faq-list {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+  }
+
+  .faq-q {
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-q::after {
+    content: '+';
+    font-size: 22px;
+    color: var(--red);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-q::after { content: '−'; }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    font-size: 15px;
+    color: var(--bone-dim);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+
+  /* ─── WAITLIST / EMAIL ─── */
+  .waitlist {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .waitlist h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 12px;
+  }
+
+  .waitlist p {
+    color: var(--bone-dim);
+    font-size: 16px;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .email-form input {
+    flex: 1;
+    min-width: 240px;
+    padding: 16px 20px;
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--bone);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s;
+  }
+
+  .email-form input:focus { border-color: var(--red); }
+
+  .email-form input::placeholder { color: var(--bone-dim); }
+
+  .email-form button {
+    padding: 16px 28px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  .email-form button:hover { background: #a82e2e; }
+
+  .email-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--bone-dim);
+  }
+
+  .form-success {
+    display: none;
+    color: var(--red);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 20px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--bone-dim);
+  }
+
+  footer a { color: var(--bone-dim); text-decoration: none; }
+  footer a:hover { color: var(--bone); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .hero { padding: 100px 20px 60px; }
+    .section { padding: 60px 20px; }
+    .pricing-card { padding: 36px 24px; }
+    .deletes-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">DELETE AFTER I <span>DIE</span></a>
+  <a href="#pricing" class="nav-cta">Get Protected →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tagline">Everyone has something to delete</div>
+  <h1>YOUR SECRETS<br><span class="line-red">DIE WITH YOU</span></h1>
+  <p class="hero-sub">Your dating apps. Your DMs. Your email. Your photos. Your files. Your browser history. If you stop checking in, it all disappears.</p>
+  <div class="hero-ctas">
+    <a href="#pricing" class="btn-primary">Become a Founding Member →</a>
+    <a href="#how" class="btn-secondary">How It Works</a>
+  </div>
+  <p class="hero-note"><strong>300 spots only</strong> — Founding member pricing won't last.</p>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">DATING APPS <span>✕</span></span>
+    <span class="ticker-item">INSTAGRAM DMS <span>✕</span></span>
+    <span class="ticker-item">BROWSER HISTORY <span>✕</span></span>
+    <span class="ticker-item">GMAIL <span>✕</span></span>
+    <span class="ticker-item">GOOGLE PHOTOS <span>✕</span></span>
+    <span class="ticker-item">LOCAL FILES <span>✕</span></span>
+    <span class="ticker-item">SAVED PASSWORDS <span>✕</span></span>
+    <span class="ticker-item">GOOGLE DRIVE <span>✕</span></span>
+    <span class="ticker-item">DISCREET APPS <span>✕</span></span>
+    <span class="ticker-item">SEARCH HISTORY <span>✕</span></span>
+    <span class="ticker-item">DATING APPS <span>✕</span></span>
+    <span class="ticker-item">INSTAGRAM DMS <span>✕</span></span>
+    <span class="ticker-item">BROWSER HISTORY <span>✕</span></span>
+    <span class="ticker-item">GMAIL <span>✕</span></span>
+    <span class="ticker-item">GOOGLE PHOTOS <span>✕</span></span>
+    <span class="ticker-item">LOCAL FILES <span>✕</span></span>
+    <span class="ticker-item">SAVED PASSWORDS <span>✕</span></span>
+    <span class="ticker-item">GOOGLE DRIVE <span>✕</span></span>
+    <span class="ticker-item">DISCREET APPS <span>✕</span></span>
+    <span class="ticker-item">SEARCH HISTORY <span>✕</span></span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="section-title reveal">Three steps.<br>Fifteen minutes.<br>Permanent peace of mind.</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Connect</h3>
+        <p>Download the desktop app. Log into the accounts you want protected. Select what gets deleted — specific folders, email labels, entire accounts, or everything. Setup takes 15 minutes.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Check In</h3>
+        <p>A simple app on your phone shows a countdown timer. Tap it once a day — or once a week — to prove you're still here. One tap. One second. Timer resets.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Disappear</h3>
+        <p>If you ever stop tapping — because you can't — the app silently erases everything you flagged. Your dating profiles. Your DMs. Your photos. Your browser history. Gone. Your secrets die with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE QUESTION -->
+<section class="question">
+  <div class="container">
+    <h2 class="reveal">What would your family find on your phone if you died tomorrow?</h2>
+    <p class="reveal">Everyone has something. A conversation. A photo. A search. An app. Something that's nobody's business but yours. Delete After I Die makes sure it stays that way.</p>
+  </div>
+</section>
+
+<!-- WHAT IT DELETES -->
+<section class="section" id="what">
+  <div class="container">
+    <div class="section-label reveal">What It Protects</div>
+    <h2 class="section-title reveal">Your entire digital life.<br>One dead man's switch.</h2>
+    <div class="deletes-grid">
+      <div class="delete-item reveal"><div class="delete-icon">📧</div><div><div class="name">Gmail</div><div class="type">Emails, labels, entire inbox</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📁</div><div><div class="name">Google Drive</div><div class="type">Files, folders, documents</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📸</div><div><div class="name">Google Photos</div><div class="type">Albums or full library</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🔍</div><div><div class="name">Search History</div><div class="type">Google, YouTube, location</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🔥</div><div><div class="name">Tinder</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">💛</div><div><div class="name">Bumble</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🤫</div><div><div class="name">Discreet Dating</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">💬</div><div><div class="name">Instagram DMs</div><div class="type">Messages + account</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🔑</div><div><div class="name">Saved Passwords</div><div class="type">Chrome, Firefox, Edge, Brave</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🌐</div><div><div class="name">Browser History</div><div class="type">History, autofill, cookies</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">💻</div><div><div class="name">Local Files</div><div class="type">Any folders you choose</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🔐</div><div><div class="name">OkCupid</div><div class="type">Full account deletion</div></div></div>
+      <div class="coming-soon reveal">Facebook · Twitter/X · Reddit · Discord · TikTok · LinkedIn — coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY CALLOUT -->
+<section class="question">
+  <div class="container">
+    <div class="section-label reveal">Your Privacy</div>
+    <h2 class="reveal">Nothing leaves your computer. Ever.</h2>
+    <p class="reveal" style="margin-top: 16px;">Your passwords and login sessions are stored on your machine, encrypted by your operating system's built-in security. Our servers store exactly one thing: the timestamp of your last check-in. That's it. We never see your credentials. We never access your accounts. Everything runs locally on your desktop.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-label reveal" style="text-align:center;">Founding Member Pricing</div>
+    <h2 class="section-title reveal" style="text-align:center;">Limited to 300 members.</h2>
+    <div class="pricing-card reveal">
+      <div class="pricing-badge">Founding Member — Lifetime Access</div>
+      <div class="pricing-price"><sup>$</sup>129</div>
+      <div class="pricing-term">One-time payment. Lifetime protection. No subscription.</div>
+      <ul class="pricing-features">
+        <li>Gmail, Google Drive, Google Photos deletion</li>
+        <li>Tinder, Bumble, OkCupid + discreet dating apps</li>
+        <li>Instagram DMs and account deletion</li>
+        <li>Browser history, passwords, autofill wipe</li>
+        <li>Local file and folder deletion</li>
+        <li>Mobile check-in app (iOS + Android)</li>
+        <li>Trusted contact notification</li>
+        <li>Dry run mode — preview before you commit</li>
+        <li>All future v1 updates included</li>
+      </ul>
+      <!-- REPLACE THIS HREF WITH YOUR STRIPE PAYMENT LINK -->
+      <a href="#waitlist" class="pricing-cta" id="buyBtn">Join the Founding 300 →</a>
+      <p class="pricing-remaining"><strong id="spotsLeft">247</strong> of 300 spots remaining</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="section-title reveal">Questions you're<br>already thinking.</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">What if I accidentally don't check in?</div>
+        <div class="faq-a">The app sends escalating notifications — push, email, and SMS — as your timer counts down. At 75%, 50%, 25%, and 10% remaining, you'll be reminded. A trusted contact can also be notified before deletion fires. Plus, there's a configurable grace period and a 60-second abort countdown on your desktop before anything gets deleted.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Is my data safe?</div>
+        <div class="faq-a">Your credentials never leave your machine. They're encrypted by your operating system's built-in security (macOS Keychain / Windows Credential Manager). Our servers only store the timestamp of your last check-in. We can't access your accounts even if we wanted to.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">What about my phone? Can it delete iPhone apps?</div>
+        <div class="faq-a">The deletion engine runs from your desktop computer. It reaches your online accounts (Gmail, Instagram, dating apps, etc.) through your web browser sessions. Some content that exists only on your physical phone — like iMessage texts or your camera roll — is out of reach for any software. We'll show you how to organize your digital life so the important stuff is in places we can protect.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Does my computer need to be on?</div>
+        <div class="faq-a">Yes. The deletion engine runs from your desktop, so your computer needs to be powered on and connected to the internet for deletion to execute. We recommend keeping your computer plugged in and set to "never sleep." Your local files are already gone if your computer is destroyed — the app handles cloud account cleanup.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">What if a platform changes their website?</div>
+        <div class="faq-a">Our deletion scripts update automatically from the cloud — no app update needed on your end. When a platform makes changes, we push a fix that applies instantly to all users. We run daily tests against every supported platform to catch issues before you ever notice them.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Is this legal?</div>
+        <div class="faq-a">Yes. You're using browser automation to exercise your existing right to delete your own accounts and data. It's functionally identical to you sitting down and clicking "Delete Account" yourself — just automated. We provide a privacy tool, not a service.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">What's a "Founding Member"?</div>
+        <div class="faq-a">The first 300 customers get lifetime access for a one-time payment of $129. After that, the product moves to annual pricing ($99/year). Founding members keep lifetime access to all v1 features and maintenance updates. New platforms added later may be part of a premium tier.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST / EMAIL CAPTURE -->
+<section class="waitlist" id="waitlist">
+  <h2 class="reveal">Not ready to buy?<br>Get the free playbook.</h2>
+  <p class="reveal">"The Digital Dead Man's Playbook" — how to organize your digital life so nothing survives you. Free PDF, no spam, unsubscribe anytime.</p>
+  <form class="email-form reveal" id="emailForm">
+    <input type="email" placeholder="Your email address" required id="emailInput">
+    <button type="submit">Get the Playbook →</button>
+  </form>
+  <p class="email-note reveal">Join 0 others who are already prepared.</p>
+  <div class="form-success" id="formSuccess">You're in. Check your email for the playbook. 🖤</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="mailto:brad@bradyeager.com">Contact</a>
+    <a href="https://instagram.com/delete.after.i.die" target="_blank">Instagram</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <p>© 2026 Delete After I Die. All rights reserved.</p>
+  <p style="margin-top: 8px; font-size: 11px;">Your secrets die with you. ☠</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// FAQ toggles
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    item.classList.toggle('open');
+  });
+});
+
+// Email form (placeholder - connect to Brevo/Resend)
+document.getElementById('emailForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = document.getElementById('emailInput').value;
+  // TODO: Connect to Brevo/Resend API
+  // For now, show success message
+  this.style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  console.log('Email captured:', email);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
