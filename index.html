@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Delete After I Die — Your Secrets Die With You</title>
-<meta name="description" content="A dead man's switch for your digital life. Your dating apps, DMs, emails, photos, files, and browser history — deleted automatically if you stop checking in.">
+<title>Delete After I Die — Dead Man's Switch App | Auto-Delete Accounts & Files</title>
+<meta name="description" content="Automatically deletes your Gmail, dating apps, browser history, photos, and files if you stop checking in. The dead man's switch for your digital life. Mac & Windows.">
 <meta property="og:title" content="Delete After I Die">
 <meta property="og:description" content="Your secrets die with you. The dead man's switch for your digital life.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://deleteafteridie.com">
+<meta property="og:image" content="https://deleteafteridie.com/og-image.jpg">
+<meta name="keywords" content="dead man's switch app, delete data after death, automatically delete accounts after death, digital privacy after death, delete accounts when you die, dead man switch delete files, app that deletes everything when you die">
+<link rel="canonical" href="https://deleteafteridie.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -788,9 +791,21 @@
         <li>Dry run mode — preview before you commit</li>
         <li>All future v1 updates included</li>
       </ul>
-      <!-- REPLACE THIS HREF WITH YOUR STRIPE PAYMENT LINK -->
+      <div id="pricingCountdown" style="background:#050507; border:1px solid #1E1E26; border-radius:8px; padding:16px; margin-bottom:24px; text-align:center;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#C83A3A; margin-bottom:10px;">Founding Price Expires In</div>
+        <div style="display:flex; justify-content:center; gap:16px;">
+          <div style="text-align:center;"><span id="cd-days" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Days</span></div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A; line-height:1.2;">:</div>
+          <div style="text-align:center;"><span id="cd-hours" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Hours</span></div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A; line-height:1.2;">:</div>
+          <div style="text-align:center;"><span id="cd-mins" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Mins</span></div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A; line-height:1.2;">:</div>
+          <div style="text-align:center;"><span id="cd-secs" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Secs</span></div>
+        </div>
+      </div>
       <a href="https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800" class="pricing-cta" id="buyBtn">Join the Founding 300 →</a>
       <p class="pricing-remaining"><strong id="spotsLeft">247</strong> of 300 spots remaining</p>
+      <p style="font-size:11px; color:#8A8680; text-align:center; margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto; line-height:1.6;">By purchasing you agree to our <a href="/terms" style="color:#8A8680; text-decoration:underline;">Terms of Service</a>, <a href="/privacy" style="color:#8A8680; text-decoration:underline;">Privacy Policy</a>, and <a href="/refunds" style="color:#8A8680; text-decoration:underline;">Refund Policy</a>.</p>
     </div>
   </div>
 </section>
@@ -841,7 +856,7 @@
     <input type="email" placeholder="Your email address" required id="emailInput">
     <button type="submit">Get the Playbook →</button>
   </form>
-  <p class="email-note reveal">Join 0 others who are already prepared.</p>
+  <p class="email-note reveal">Be one of the first 300 to get protected.</p>
   <div class="form-success" id="formSuccess">You're in. Check your email for the playbook. 🖤</div>
 </section>
 
@@ -851,6 +866,9 @@
     <a href="mailto:brad@bradyeager.com">Contact</a>
     <a href="https://instagram.com/delete.after.i.die" target="_blank">Instagram</a>
     <a href="#faq">FAQ</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/refunds">Refund Policy</a>
   </div>
   <p>© 2026 Delete After I Die. All rights reserved.</p>
   <p style="margin-top: 8px; font-size: 11px;">Your secrets die with you. ☠</p>
@@ -895,7 +913,131 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+// Dynamic spot counter
+async function loadSpotCount() {
+  try {
+    const res = await fetch('/api/spots');
+    const data = await res.json();
+    const el = document.getElementById('spotsLeft');
+    if (el && data.remaining !== undefined) {
+      el.textContent = data.remaining;
+    }
+  } catch(e) {
+    // Fallback: keep whatever number is already showing
+    console.log('Spot counter unavailable, using fallback');
+  }
+}
+loadSpotCount();
+
+// Assent modal logic
+const buyBtn = document.getElementById('buyBtn');
+const modal = document.getElementById('assentModal');
+const continueBtn = document.getElementById('assentContinue');
+const cancelBtn = document.getElementById('assentCancel');
+const checks = document.querySelectorAll('.assent-check');
+const STRIPE_URL = 'https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800';
+
+buyBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+});
+
+checks.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const allChecked = Array.from(checks).every(c => c.checked);
+    continueBtn.disabled = !allChecked;
+    continueBtn.style.background = allChecked ? '#C83A3A' : '#333';
+    continueBtn.style.color = allChecked ? '#fff' : '#666';
+    continueBtn.style.cursor = allChecked ? 'pointer' : 'not-allowed';
+  });
+});
+
+continueBtn.addEventListener('click', function() {
+  if (this.disabled) return;
+  // Record consent
+  const record = {
+    event: 'checkout_assent',
+    timestamp: new Date().toISOString(),
+    terms_version: '4.0',
+    checkboxes: ['irreversible_deletion','failure_risk','local_storage','terms_privacy','age_legal'],
+    user_agent: navigator.userAgent,
+    referrer: document.referrer
+  };
+  try { localStorage.setItem('daid_consent_' + Date.now(), JSON.stringify(record)); } catch(e) {}
+  window.location.href = STRIPE_URL;
+});
+
+function closeModal() {
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+  checks.forEach(c => { c.checked = false; });
+  continueBtn.disabled = true;
+  continueBtn.style.background = '#333';
+  continueBtn.style.color = '#666';
+  continueBtn.style.cursor = 'not-allowed';
+}
+
+cancelBtn.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+// Countdown timer — set your target date here
+const DEADLINE = new Date('2026-05-11T23:59:59'); // 30 days from launch — update as needed
+function updateCountdown() {
+  const now = new Date();
+  const diff = DEADLINE - now;
+  if (diff <= 0) {
+    document.getElementById('pricingCountdown').innerHTML = '<p style="color:#C83A3A; font-family:Bebas Neue; font-size:20px; letter-spacing:2px;">FOUNDING PRICING CLOSED</p>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
+
+<div id="assentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); z-index:10000; overflow-y:auto; padding:20px;">
+  <div style="max-width:560px; margin:40px auto; background:#0C0C10; border:1px solid #1E1E26; border-top:3px solid #C83A3A; border-radius:12px; padding:40px 36px;">
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:32px; color:#E8E4DE; margin-bottom:8px; letter-spacing:1px;">Before You Continue</h2>
+    <p style="font-size:14px; color:#8A8680; margin-bottom:28px; line-height:1.6;">Please confirm you understand what this product does. All five must be checked.</p>
+
+    <div id="assentBoxes" style="display:flex; flex-direction:column; gap:16px; margin-bottom:32px;">
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
+        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I understand that deletion is <strong>potentially permanent and irreversible</strong>. I will maintain independent backups of anything I cannot afford to lose.</span>
+      </label>
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
+        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I understand the Service may <strong>fail to delete content</strong> if a platform changes its interface, or may delete <strong>earlier than expected</strong> if I misconfigure my settings.</span>
+      </label>
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
+        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I understand my credentials are <strong>stored only on my computer</strong> — never on Delete After I Die's servers.</span>
+      </label>
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
+        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I have read and agree to the <a href="/terms" style="color:#C83A3A;">Terms of Service</a>, <a href="/privacy" style="color:#C83A3A;">Privacy Policy</a>, and <a href="/refunds" style="color:#C83A3A;">Refund Policy</a>.</span>
+      </label>
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
+        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I confirm I am at least <strong>18 years old</strong> and am not using this Service to destroy evidence subject to any legal hold or investigation.</span>
+      </label>
+    </div>
+
+    <button id="assentContinue" disabled style="width:100%; padding:18px; background:#333; color:#666; border:none; border-radius:8px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; cursor:not-allowed; transition:all 0.3s;">I Understand — Continue to Checkout →</button>
+    <p style="text-align:center; font-size:12px; color:#8A8680; margin-top:12px;">You will be redirected to Stripe's secure checkout. $129 one-time payment.</p>
+    <p style="text-align:center; margin-top:8px;"><a href="#" id="assentCancel" style="font-size:12px; color:#8A8680;">Cancel, take me back</a></p>
+  </div>
+</div>
 
 </body>
 </html>
