@@ -667,11 +667,13 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 600px) {
-    .hero { padding: 100px 20px 60px; }
-    .section { padding: 60px 20px; }
-    .pricing-card { padding: 36px 24px; }
+    .hero { padding: 100px 20px 50px; }
+    .section { padding: 40px 20px; }
+    .pricing-card { padding: 28px 20px; }
     .deletes-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
+    .question { padding: 48px 20px; }
+    .waitlist { padding: 48px 20px; }
   }
 </style>
 </head>
@@ -688,9 +690,10 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tagline">Everyone has something to delete</div>
-  <h1>YOUR SECRETS<br><span class="line-red">DIE</span> WITH YOU</h1>
-  <p class="hero-sub">Your dating apps. Your DMs. Your email. Your photos. Your files. Your browser history. If you stop checking in, it all disappears.</p>
+  <div class="hero-tagline">Everyone has something to hide</div>
+  <h1>YOUR DIGITAL SECRETS<br>WON'T <span class="line-red">DIE</span> WITH YOU</h1>
+  <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,72px);line-height:1;color:var(--red);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;">They can.</p>
+  <p class="hero-sub">Your browser history. Your AI conversations. Your email. Your DMs. Your dating apps. Your photos.<br><br>If you stop checking in, it all disappears.</p>
   <div class="hero-ctas">
     <a href="#pricing" class="btn-primary">Become a Founding Member →</a>
     <a href="#how" class="btn-secondary">How It Works</a>
@@ -791,21 +794,22 @@
     <div class="section-label reveal">What It Protects</div>
     <h2 class="section-title reveal">Your entire digital life.<br>One dead man's switch.</h2>
     <div class="deletes-grid">
-      <div class="delete-item reveal"><div class="delete-icon">📧</div><div><div class="name">Gmail</div><div class="type">Emails, labels, entire inbox</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">📁</div><div><div class="name">Google Drive</div><div class="type">Files, folders, documents</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">📸</div><div><div class="name">Google Photos</div><div class="type">Albums or full library</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🌐</div><div><div class="name">Browser History</div><div class="type">History, autofill, cookies</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🤖</div><div><div class="name">AI Chat History</div><div class="type">ChatGPT, Claude, Gemini, Grok + more</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">🔍</div><div><div class="name">Search History</div><div class="type">Google, YouTube, location</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">🔥</div><div><div class="name">Tinder</div><div class="type">Full account deletion</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">💛</div><div><div class="name">Bumble</div><div class="type">Full account deletion</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">🤫</div><div><div class="name">Discreet Dating</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">▶️</div><div><div class="name">YouTube History</div><div class="type">Watch history, searches, likes</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📧</div><div><div class="name">Gmail</div><div class="type">Emails, labels, entire inbox</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">💬</div><div><div class="name">Instagram DMs</div><div class="type">Messages + account</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">🔑</div><div><div class="name">Saved Passwords</div><div class="type">Chrome, Firefox, Edge, Brave</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">🌐</div><div><div class="name">Browser History</div><div class="type">History, autofill, cookies</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">💻</div><div><div class="name">Local Files</div><div class="type">Any folders you choose</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">🔐</div><div><div class="name">OkCupid</div><div class="type">Full account deletion</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">🤖</div><div><div class="name">AI Chat History</div><div class="type">ChatGPT, Claude, Gemini, Grok + more</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📸</div><div><div class="name">Google Photos</div><div class="type">Albums or full library</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">📍</div><div><div class="name">Location History</div><div class="type">Maps, check-ins, travel data</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">▶️</div><div><div class="name">YouTube History</div><div class="type">Watch history, searches, likes</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">💻</div><div><div class="name">Local Files</div><div class="type">Any folders you choose</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📁</div><div><div class="name">Google Drive</div><div class="type">Files, folders, documents</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🔥</div><div><div class="name">Tinder</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">💛</div><div><div class="name">Bumble</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🔐</div><div><div class="name">OkCupid</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">🤫</div><div><div class="name">Ashley Madison</div><div class="type">Full account deletion</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📱</div><div><div class="name">Grindr</div><div class="type">Full account deletion</div></div></div>
       <div class="coming-soon reveal">Facebook · Twitter/X · Reddit · Discord · TikTok · LinkedIn · Perplexity · DeepSeek · Copilot — coming soon</div>
     </div>
   </div>
@@ -826,16 +830,21 @@
   <div class="container">
     <div class="section-label reveal" style="text-align:center;">Founding Member Pricing</div>
     <h2 class="section-title reveal" style="text-align:center;">Limited to <span style="color:var(--red);">300</span> members.</h2>
-    <p class="reveal" style="text-align:center;color:var(--bone-dim);font-size:15px;margin-top:-24px;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">After 300 spots, pricing moves to <strong style="color:var(--bone);">$99/year</strong>. Founding members pay once, keep access forever. <span style="color:var(--red);font-weight:600;">That's a $99 annual fee you'll never pay.</span></p>
+    <p class="reveal" style="text-align:center;color:var(--bone-dim);font-size:15px;margin-top:-24px;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8;">
+      After <span style="color:var(--red);font-weight:700;">300 spots</span>, this becomes <strong style="color:var(--bone);">$99/year. Every year.</strong> Forever.<br>
+      Founding members pay <strong style="color:var(--bone);">$129 once</strong> and never pay again.<br>
+      <span style="color:var(--red);font-weight:600;">That's a $99 annual fee you will never pay.</span>
+    </p>
     <div class="pricing-card reveal">
       <div class="pricing-badge">Founding Member — Lifetime Access</div>
       <div class="pricing-price"><sup>$</sup>129</div>
       <div class="pricing-term">One-time payment. Lifetime protection. No subscription.</div>
       <ul class="pricing-features">
-        <li>Gmail, Google Drive, Google Photos deletion</li>
-        <li>Tinder, Bumble, OkCupid + discreet dating apps</li>
+        <li>Browser history, AI chat history, search history wipe</li>
+        <li>Gmail, Google Photos, Google Drive deletion</li>
+        <li>Saved passwords + autofill wipe</li>
         <li>Instagram DMs and account deletion</li>
-        <li>Browser history, passwords, autofill wipe</li>
+        <li>Tinder, Bumble, OkCupid, Ashley Madison + Grindr</li>
         <li>Local file and folder deletion</li>
         <li>Mobile check-in app (iOS + Android)</li>
         <li>Trusted contact notification</li>
@@ -874,6 +883,10 @@
       <div class="faq-item reveal">
         <div class="faq-q">Is this for real?</div>
         <div class="faq-a"><strong>Absolutely.</strong> <span style="color:#C83A3A;font-weight:700;">7,500 Americans die every day</span> — most of them with phones full of things their families will find. Search history going back years. Dating profiles still active. Instagram DMs still readable. AI chat conversations they thought were private. Browser history documenting every private thought they've had. Every single one of those people thought they had more time. <strong>You still can.</strong> Delete After I Die is the only tool that combines an inactivity trigger with automated deletion across your accounts — so when you stop checking in, everything you've flagged disappears automatically.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">How does it work?</div>
+        <div class="faq-a">Download the desktop app on your Mac or Windows computer. Log into the accounts you want protected — Gmail, your dating apps, your browser, whatever you choose. Set your check-in timer. Then install the check-in app on your phone.<br><br>Once a day — or once a week, or whatever interval you set — you tap the app to prove you're still here. One tap. One second. Timer resets.<br><br>If you ever stop tapping — because you can't — the desktop app quietly logs into your accounts and deletes everything you configured. No one else has to do anything. No instructions to leave behind. It handles itself.<br><br>Your computer needs to be on and connected to the internet for deletion to run. We recommend keeping it plugged in and set to never sleep.</div>
       </div>
       <div class="faq-item reveal">
         <div class="faq-q">What if I accidentally don't check in?</div>
@@ -918,9 +931,9 @@
       </div>
       <div style="flex:1;min-width:260px;">
         <div class="section-label" style="margin-bottom:12px;">Why I Built This</div>
-        <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a gym owner in San Diego who had a conversation I couldn't stop thinking about.</p>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client had just gone through his father's phone after the funeral. What he found changed how the whole family remembered him. He said: <em style="color:#E8E4DE;">"There should be an app that just deletes everything. Before anyone can find it."</em></p>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I spent six months building it with AI tools. I'm offering it to the first 300 people who believe their digital life deserves the same privacy as their physical one.</p>
+        <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a personal trainer in San Diego who had a conversation I couldn't stop thinking about.</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client told me she went through her husband's phone a few days before the funeral, just to find a photo to share at his memorial. What she found didn't just break her heart — it rewrote every memory she had of him. She looked at me and said: <em style="color:#E8E4DE;">"I found everything. And now I have to figure out how to grieve someone I'm not sure I actually knew."</em></p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I spent six months building Delete After I Die with AI tools. I'm offering it to the first 300 people who believe their digital life deserves the same privacy as their physical one.</p>
       </div>
     </div>
   </div>
@@ -929,13 +942,13 @@
 <!-- WAITLIST / EMAIL CAPTURE -->
 <section class="waitlist" id="waitlist">
   <h2 class="reveal">"They're Going to Go <span style="color:var(--red);">Through Everything."</span></h2>
-  <p class="reveal">Get the free Digital Dead Man's Playbook — what survives you, platform by platform, and how to make sure it doesn't. No spam, unsubscribe anytime.</p>
+  <p class="reveal">Get the free guide — what survives you when you die, platform by platform, and exactly how to make sure it doesn't. No spam. Unsubscribe anytime.</p>
   <form class="email-form reveal" id="emailForm">
     <input type="email" placeholder="Your email address" required id="emailInput">
-    <button type="submit">Send Me the Playbook →</button>
+    <button type="submit">Send Me the Guide →</button>
   </form>
   <p class="email-note reveal">Be one of the first 300 to get protected.</p>
-  <div class="form-success" id="formSuccess">You're in. Check your inbox — the playbook is on its way. 🖤</div>
+  <div class="form-success" id="formSuccess">You're in. Check your inbox — the guide is on its way. 🖤</div>
 </section>
 
 <!-- FOOTER -->
