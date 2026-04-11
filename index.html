@@ -271,7 +271,7 @@
 
   .steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
 
@@ -666,12 +666,15 @@
   }
 
   /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 600px) {
     .hero { padding: 100px 20px 50px; }
     .section { padding: 40px 20px; }
     .pricing-card { padding: 28px 20px; }
     .deletes-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; }
     .question { padding: 48px 20px; }
     .waitlist { padding: 48px 20px; }
   }
@@ -693,7 +696,7 @@
   <div class="hero-tagline">Everyone has something to hide</div>
 
   <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);line-height:0.95;letter-spacing:-1px;margin-bottom:0;opacity:0;animation:fadeUp 0.8s ease forwards 0.4s;">
-    YOUR DIGITAL <span style="color:var(--red);">SECRETS</span>
+    <span style="color:var(--red);">YOUR</span> DIGITAL <span style="color:var(--red);">SECRETS</span>
   </h1>
 
   <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);line-height:0.95;letter-spacing:-1px;margin-bottom:32px;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;">
@@ -815,7 +818,7 @@
 <!-- THE QUESTION -->
 <section class="question">
   <div class="container">
-    <h2 class="reveal"><span style="color:var(--red);">What would your family find</span> on your phone if you died tomorrow?</h2>
+    <h2 class="reveal">What would your <span style="color:var(--red);">family find</span> on your phone if you <span style="color:var(--red);">died tomorrow</span>?</h2>
     <p class="reveal">Everyone has something. A conversation. A photo. A search. An app. Something that's nobody's business but yours. Delete After I Die makes sure it stays that way.</p>
   </div>
 </section>
@@ -824,7 +827,7 @@
 <section class="section" id="what">
   <div class="container">
     <div class="section-label reveal" style="display:flex;align-items:center;gap:10px;"><img src="/logo.png" alt="" style="width:20px;height:20px;border-radius:4px;opacity:0.85;">What It Protects</div>
-    <h2 class="section-title reveal">Your entire digital life.<br>One dead man's switch.</h2>
+    <h2 class="section-title reveal"><span style="color:var(--red);">Your</span> entire digital <span style="color:var(--red);">life.</span><br><span style="color:var(--red);">One</span> dead man's <span style="color:var(--red);">switch.</span></h2>
     <div class="deletes-grid">
       <div class="delete-item reveal"><div class="delete-icon">🌐</div><div><div class="name">Browser History</div><div class="type">History, autofill, cookies</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">🤖</div><div><div class="name">AI Chat History</div><div class="type">ChatGPT, Claude, Gemini, Grok + more</div></div></div>
