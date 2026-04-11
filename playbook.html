@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Digital Dead Man's Playbook — Delete After I Die</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #050507;
+    --surface: #0C0C10;
+    --border: #1E1E26;
+    --bone: #E8E4DE;
+    --bone-dim: #8A8680;
+    --red: #C83A3A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Outfit', sans-serif; background: var(--black); color: var(--bone); line-height: 1.8; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 720px; margin: 0 auto; padding: 60px 32px 100px; }
+
+  /* COVER */
+  .cover { text-align: center; padding: 80px 0 60px; border-bottom: 1px solid var(--border); margin-bottom: 60px; }
+  .cover-label { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+  .cover h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 8vw, 72px); line-height: 0.95; letter-spacing: -0.5px; margin-bottom: 20px; }
+  .cover h1 .red { color: var(--red); }
+  .cover-sub { font-size: 18px; font-weight: 300; color: var(--bone-dim); line-height: 1.6; max-width: 500px; margin: 0 auto 32px; }
+  .cover-meta { font-size: 13px; color: var(--bone-dim); }
+  .cover-meta strong { color: var(--bone); }
+
+  /* SECTIONS */
+  .chapter { margin-bottom: 64px; }
+  .chapter-num { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .chapter h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 42px); line-height: 1; margin-bottom: 24px; }
+  .chapter h2 .red { color: var(--red); }
+  p { margin-bottom: 20px; color: var(--bone); font-weight: 300; }
+  p strong { font-weight: 600; color: var(--bone); }
+  p .red { color: var(--red); font-weight: 700; }
+  p .red-em { color: var(--red); font-style: italic; font-weight: 600; }
+
+  /* FEAR BOX */
+  .fear-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--red); padding: 24px 28px; margin: 32px 0; border-radius: 4px; }
+  .fear-box p { margin: 0; font-size: 15px; color: var(--bone-dim); }
+  .fear-box p strong { color: var(--bone); }
+  .fear-box p .red { color: var(--red); }
+
+  /* STAT CALLOUT */
+  .stat { text-align: center; padding: 40px 24px; margin: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: var(--red); line-height: 1; }
+  .stat-label { font-size: 16px; color: var(--bone-dim); margin-top: 8px; font-weight: 300; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; margin: 24px 0 32px; }
+  .checklist li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 14px; font-size: 16px; font-weight: 300; }
+  .checklist li::before { content: '✕'; color: var(--red); font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 3px; }
+  .checklist li.check::before { content: '✓'; color: #4a9; }
+
+  /* PLATFORM TABLE */
+  .platform-list { margin: 24px 0 32px; }
+  .platform-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .platform-name { font-weight: 500; font-size: 15px; }
+  .platform-risk { font-size: 13px; padding: 4px 12px; border-radius: 20px; font-weight: 600; }
+  .risk-critical { background: rgba(200,58,58,0.15); color: var(--red); }
+  .risk-high { background: rgba(200,130,58,0.12); color: #c87a3a; }
+  .risk-medium { background: rgba(180,180,60,0.1); color: #b0b040; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(24px, 4vw, 36px); color: var(--bone-dim); padding: 32px 0; line-height: 1.2; }
+  .pull-quote .red { color: var(--red); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* CTA */
+  .cta-box { background: var(--surface); border: 2px solid var(--red); border-radius: 12px; padding: 40px 36px; text-align: center; margin-top: 64px; }
+  .cta-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; margin-bottom: 12px; }
+  .cta-box p { color: var(--bone-dim); margin-bottom: 24px; font-size: 15px; }
+  .cta-btn { display: inline-block; background: var(--red); color: white; padding: 16px 40px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .page { padding: 40px 20px 80px; }
+    .stat-num { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-label">Free from Delete After I Die</div>
+    <h1>"<span class="red">They're Going to Go</span><br>Through Everything."</h1>
+    <p class="cover-sub">The Digital Dead Man's Playbook: What Survives You — and How to Make Sure It Doesn't</p>
+    <p class="cover-meta">By <strong>Delete After I Die</strong> &nbsp;|&nbsp; deleteafteridie.com &nbsp;|&nbsp; © 2026</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="chapter">
+    <div class="chapter-num">Introduction</div>
+    <h2>You Will Die <span class="red">Logged In.</span></h2>
+    <p>You don't think about it. Nobody does. You wake up, check your phone, scroll Instagram, open a dating app, search for something you'd never say out loud — and you don't think: <em>what if this is the last thing I ever do on this device?</em></p>
+    <p>But for <span class="red">7,500 Americans today</span>, it will be. They'll die logged in. With full inboxes, active profiles, years of browser history, and photos they never intended anyone to see — just sitting there, waiting.</p>
+    <p>Their families will find it. Not because they're snooping. Because grief makes people desperate. Because passwords need to be found. Because accounts need to be closed. Because someone needs to go through the phone.</p>
+
+    <div class="pull-quote">
+      "Nobody plans for this because nobody plans to die. <span class="red">But you will.</span> The only question is what you leave behind."
+    </div>
+
+    <p>This playbook is not comfortable reading. It's not meant to be. It's meant to make you do something about it while you still can.</p>
+    <p>We'll walk through exactly what happens to your digital life when you die — platform by platform, account by account — and exactly what you need to do before that day comes.</p>
+    <p><strong>Let's start with the thing everyone is thinking but nobody wants to say out loud.</strong></p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter One</div>
+    <h2>What Your Family Is <span class="red">About to Find</span></h2>
+
+    <p>When someone dies, their family doesn't get a notification that says "here's what to look at." They get access. To everything. Because the phone is there. Because the laptop is there. Because the passwords get shared in a crisis. Because someone needs to cancel the subscriptions.</p>
+
+    <div class="stat">
+      <div class="stat-num">130+</div>
+      <div class="stat-label">The average number of online accounts a person has.<br>Most people have no idea it's that many.</div>
+    </div>
+
+    <p>Of those 130+ accounts, <span class="red">almost none of them have any instructions</span> for what happens when you die. No designated recipient. No deletion request. No "if I'm gone, please close this." Just an account sitting there, logged in, full of data, waiting for whoever finds it first.</p>
+
+    <p>Here's what they're going to find:</p>
+
+    <ul class="checklist">
+      <li>Your complete browser history. Every search. Every site. Everything you've looked up at 2am that you'd never want another human being to see.</li>
+      <li>Your saved passwords. Every account you've ever logged into from that browser. All of them. One list.</li>
+      <li>Your Gmail. Every email you've ever sent or received. The ones from your doctor. The ones from your lawyer. The ones from the person you shouldn't have been emailing.</li>
+      <li>Your Google search history. YouTube history. Location history. A documented timeline of everywhere you've been and everything you've searched for — for years.</li>
+      <li>Your dating app profiles. Still active. Still showing up in search results. Still with photos. Still with messages.</li>
+      <li>Your Instagram DMs. The full conversation history. Every message you thought was private.</li>
+      <li>Your local files. The ones in the folders you named something boring so nobody would open them.</li>
+      <li>Your photos. Including the ones in the "Recently Deleted" folder that didn't actually get deleted.</li>
+    </ul>
+
+    <div class="fear-box">
+      <p><strong>The uncomfortable truth:</strong> Most people's phones contain enough private information to completely rewrite how their family remembers them. A single conversation. A single search. A single folder. <span class="red">One thing is all it takes.</span></p>
+    </div>
+
+    <p>You have time to prevent this. Right now. The question is whether you'll use it.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter Two</div>
+    <h2>Platform by Platform:<br><span class="red">What Survives You</span></h2>
+
+    <p>Not all platforms are created equal. Some have tools to help manage your digital legacy. Most don't. Here's exactly what happens on the major platforms when you die — and how exposed you are.</p>
+
+    <div class="platform-list">
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Gmail / Google Account</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">Inactive Account Manager exists but almost nobody uses it. Default: account stays active indefinitely. Family can request access with a death certificate — but the process takes weeks and isn't guaranteed. Everything is accessible to anyone with your password.</div>
+        </div>
+        <div class="platform-risk risk-critical">Critical</div>
+      </div>
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Browser History & Passwords</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">Completely unprotected. Anyone with access to your unlocked computer has instant access to your complete browsing history and every saved password. No platform protection. No delay. No process.</div>
+        </div>
+        <div class="platform-risk risk-critical">Critical</div>
+      </div>
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Dating Apps (Tinder, Bumble, OkCupid)</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">Profile stays fully active after death. Will continue appearing in other users' feeds. No death verification process. No automatic deletion. The profile of someone who died last week is functionally identical to the profile of someone who's actively swiping.</div>
+        </div>
+        <div class="platform-risk risk-critical">Critical</div>
+      </div>
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Instagram</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">Memorialization available but requires submission of proof of death. DMs are not protected — anyone with your login can read every private conversation you've ever had. No automatic deletion process exists.</div>
+        </div>
+        <div class="platform-risk risk-high">High</div>
+      </div>
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Google Photos</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">Stays active indefinitely. Can be shared or accessed by anyone with your Google login. Includes location metadata on every photo — showing exactly where you were when each image was taken.</div>
+        </div>
+        <div class="platform-risk risk-high">High</div>
+      </div>
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Google Drive</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">All documents, files, and shared content remains accessible. Anything you've ever stored, scanned, or created — contracts, medical records, financial documents, personal writing — stays live.</div>
+        </div>
+        <div class="platform-risk risk-high">High</div>
+      </div>
+      <div class="platform-item">
+        <div>
+          <div class="platform-name">Facebook</div>
+          <div style="font-size:13px; color:var(--bone-dim); margin-top:4px;">Has a Legacy Contact and memorialization process — one of the better platform tools. But private messages are still accessible to anyone with your login. Memorialization doesn't delete private content.</div>
+        </div>
+        <div class="platform-risk risk-medium">Medium</div>
+      </div>
+    </div>
+
+    <div class="fear-box">
+      <p><span class="red">The pattern is consistent:</span> platforms are built to retain your data, not to protect your privacy after death. The business model depends on your content staying on the platform. <strong>They have no financial incentive to delete anything.</strong> That's your job — before it's too late to do it yourself.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter Three</div>
+    <h2>The Five Things <span class="red">You Need to Do</span><br>Before It's Too Late</h2>
+
+    <p>This is not a "someday" list. Someday doesn't come for 7,500 Americans every single day. Here's what to do — in order — starting today.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--red); letter-spacing:0.5px; margin-bottom:8px;">01 — Audit Every Account You Own</p>
+    <p>Open a private browser tab and go through your autofill. Count. Most people have no idea how many accounts they have until they look. Write down every account that contains something you wouldn't want found. Dating apps. Email. Cloud storage. Messaging apps. Private photos. Start with the ones that terrify you most.</p>
+
+    <div class="fear-box">
+      <p>The average person has <span class="red">130+ accounts</span>. You will find things you forgot existed. Old profiles from years ago. Conversations you thought were long gone. They're not gone. They're waiting.</p>
+    </div>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--red); letter-spacing:0.5px; margin-bottom:8px;">02 — Set Up Google's Inactive Account Manager (Today)</p>
+    <p>Go to myaccount.google.com → Data & Privacy → More options → Make a plan for your account. Set the inactivity period to 3 months. Choose what gets deleted versus shared. This is Google's built-in tool and it's free. <strong>The problem:</strong> it only handles Google. Everything else is still wide open. And it requires you to manually set it up, manually keep your account active, and manually update your preferences as your life changes. It's better than nothing — which is what most people have.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--red); letter-spacing:0.5px; margin-bottom:8px;">03 — Delete What You Can Delete Right Now</p>
+    <p>You don't need a dead man's switch to delete things you already want gone. Go through your accounts. Delete old dating profiles. Clear your browser history. Remove photos you don't want surviving you. Unsubscribe from platforms you haven't used in years. <span class="red">Do this today.</span> Every account you close now is one less thing to worry about later.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--red); letter-spacing:0.5px; margin-bottom:8px;">04 — Tell Someone What to Do With Your Accounts</p>
+    <p>This is the part nobody does. Write down — somewhere secure — which accounts exist and what you want done with each one. Not the passwords. Just the accounts and the instructions. Your trusted person needs to know: "Delete my Gmail. Close my Tinder. Let my family have my Google Photos. Delete everything else." Without instructions, they'll guess — and they'll get it wrong.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--red); letter-spacing:0.5px; margin-bottom:8px;">05 — Automate It</p>
+    <p>Here's the problem with Steps 1–4: they require you to do it right now, keep it updated, trust another person to execute correctly, and hope the platforms cooperate. <span class="red">That's four points of failure.</span> A dead man's switch removes all four. It runs automatically. It doesn't need another person. It doesn't rely on platform goodwill. And it activates precisely when it needs to — when you stop checking in.</p>
+    <p>This is what Delete After I Die was built for.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter Four</div>
+    <h2>The <span class="red">Specific Threats</span><br>Most People Don't Think About</h2>
+
+    <p>Beyond the obvious — email, photos, browser history — there are categories of digital exposure that almost nobody plans for. These are the ones that cause the most damage.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--bone); letter-spacing:0.5px; margin-bottom:8px;">The Dating App Problem</p>
+    <p>Dating profiles don't die with you. <span class="red">They stay active.</span> Still showing up. Still appearing in other users' feeds. Someone who knew you might stumble across your profile weeks after your funeral. The conversations are still there. The photos are still there. Everything you said to everyone you ever matched with — still there. For a married person, a person in a relationship, or anyone who had a private life on these platforms, this is catastrophic exposure.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--bone); letter-spacing:0.5px; margin-bottom:8px;">The Search History Problem</p>
+    <p>Your search history is a complete psychological profile of every fear, curiosity, desire, medical symptom, financial problem, and private thought you've had for years. People search things they'd never say out loud to anyone. The search bar is the most honest thing most people interact with every day — because they believe it's private. <span class="red">It's not private after you die.</span> Anyone with access to your browser or Google account has access to all of it.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--bone); letter-spacing:0.5px; margin-bottom:8px;">The "Deleted" Photos Problem</p>
+    <p>The trash folder exists. Cloud backups exist. "Recently Deleted" exists. When most people delete a photo, it sits in a recoverable state for 30 days on the device and potentially indefinitely in cloud backups. People believe they've deleted things that are completely recoverable by anyone with access to the device or account.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--bone); letter-spacing:0.5px; margin-bottom:8px;">The Location History Problem</p>
+    <p>Google knows everywhere you've been. Every restaurant, every address, every trip, every detour. Your location history is a complete documented timeline of your physical life. It shows patterns. It shows visits. It shows the places you went that don't appear anywhere else in your digital life — because you were careful about everything except the GPS running silently in your pocket.</p>
+
+    <div class="fear-box">
+      <p><span class="red">The common thread:</span> none of these require someone to be malicious or snooping. They just require access to a phone or computer — which every grieving family member has when they're trying to handle the practical aftermath of a death. <strong>They're not looking for secrets. They're just looking. And they find them anyway.</strong></p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter Five</div>
+    <h2>What a Dead Man's <span class="red">Switch Actually Does</span></h2>
+
+    <p>A dead man's switch is not complicated. The name comes from industrial safety — machines that require an operator to actively hold a switch to keep running. Release the switch, the machine stops. No operator, no operation.</p>
+    <p>In digital form: you check in regularly to prove you're alive. You stop checking in — for whatever reason — and the switch triggers. What happens next is up to you.</p>
+    <p>There are two kinds of digital dead man's switches. <span class="red">Most people build the wrong one.</span></p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--bone); letter-spacing:0.5px; margin-bottom:8px;">The Message-Sender (Not What You Need)</p>
+    <p>Services like DeadMan'sSwitch.net and similar tools send pre-written emails to designated recipients when you stop checking in. They're useful for sharing passwords with trusted people, notifying contacts, or sending final messages. What they can't do: delete anything. They send. They don't erase. If your goal is to make sure something survives you, they work. If your goal is to make sure something <span class="red">doesn't</span> survive you, they're useless.</p>
+
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--bone); letter-spacing:0.5px; margin-bottom:8px;">The Deletion Engine (What You Actually Need)</p>
+    <p>A deletion-based dead man's switch doesn't send anything. It removes things. When triggered, it logs into your accounts and deletes what you've told it to delete — dating profiles, email labels, browser history, local files, Google data, photos. Quietly. Automatically. Without anyone needing to do anything.</p>
+    <p>This is what Delete After I Die does. When you stop checking in, the desktop app triggers, opens your accounts via automated browser sessions using credentials stored only on your machine, and executes the deletions you configured during setup. <strong>Your family never knows what was there.</strong></p>
+
+    <div class="pull-quote">
+      "The goal isn't to hide that you existed.<br>The goal is to control <span class="red">what you leave behind.</span>"
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 6 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter Six</div>
+    <h2>The Complete <span class="red">Pre-Death</span><br>Digital Checklist</h2>
+    <p>Use this as your master reference. Work through it once. Update it when your accounts change.</p>
+
+    <p style="font-weight:600; font-size:15px; color:var(--bone-dim); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Accounts to Delete Now (No Automation Needed)</p>
+    <ul class="checklist">
+      <li>Dating apps you no longer actively use</li>
+      <li>Old social media accounts from platforms you've abandoned</li>
+      <li>Shopping accounts with saved payment info you no longer use</li>
+      <li>Forum accounts or communities with old posts you don't want surfaced</li>
+      <li>Email accounts you no longer check (forward anything important, then delete)</li>
+    </ul>
+
+    <p style="font-weight:600; font-size:15px; color:var(--bone-dim); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Accounts to Configure for Deletion via Dead Man's Switch</p>
+    <ul class="checklist">
+      <li>Active dating profiles (Tinder, Bumble, OkCupid, and any discreet platforms)</li>
+      <li>Gmail (specific labels, conversations, or full inbox)</li>
+      <li>Google Photos (specific albums or full library)</li>
+      <li>Google Drive (specific folders or full drive)</li>
+      <li>Google Search, YouTube, and location history</li>
+      <li>Browser history, autofill, saved passwords (local machine)</li>
+      <li>Local files and folders you've designated for deletion</li>
+      <li>Instagram (DMs and/or full account)</li>
+    </ul>
+
+    <p style="font-weight:600; font-size:15px; color:var(--bone-dim); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Accounts to Preserve or Transfer</p>
+    <ul class="checklist check">
+      <li>Financial accounts — leave access instructions with your estate executor or attorney</li>
+      <li>Photos you want family to have — share an album, don't just leave it accessible</li>
+      <li>Password manager — use the emergency access feature to designate a trusted contact</li>
+      <li>Any accounts with monetary value (crypto, domain names, digital assets)</li>
+    </ul>
+
+    <p style="font-weight:600; font-size:15px; color:var(--bone-dim); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Platform Tools to Activate Now</p>
+    <ul class="checklist check">
+      <li>Google Inactive Account Manager — set to 3 months, configure deletion or sharing</li>
+      <li>Apple Legacy Contact — designate who gets access to iCloud after death</li>
+      <li>Facebook Legacy Contact — choose memorialization vs deletion</li>
+      <li>Password manager emergency access (1Password, Bitwarden, etc.)</li>
+    </ul>
+
+    <div class="fear-box">
+      <p><span class="red">Important:</span> Platform tools cover the accounts those platforms control. They don't cover your dating apps, your browser history, your local files, your discreet platforms, or anything that requires you to log in and manually click "Delete." <strong>That's the gap Delete After I Die was built to fill.</strong></p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHAPTER 7 -->
+  <div class="chapter">
+    <div class="chapter-num">Chapter Seven</div>
+    <h2>The Only Question <span class="red">That Matters</span></h2>
+
+    <p>You've read this far. Which means you know what's on your phone. You know what's in your browser history. You know which apps you have that your family shouldn't find.</p>
+    <p>The question isn't whether you should protect that information. <span class="red">You already know the answer.</span></p>
+    <p>The question is whether you're going to do something about it before an accident, a health event, or a Tuesday takes that choice away from you.</p>
+    <p>Most people don't. Not because they don't care — but because "later" feels safe. Because death feels distant. Because it's uncomfortable to sit with the reality that the thing you're worried about could happen on any day, including today.</p>
+
+    <div class="stat">
+      <div class="stat-num">7,500</div>
+      <div class="stat-label">Americans who will die today.<br>Most of them thought they had more time.</div>
+    </div>
+
+    <p>You have time right now. This is that time. Do something with it.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Delete After I Die</h3>
+    <p>The dead man's switch for your digital life. When you stop checking in, it deletes everything you've flagged — automatically, silently, permanently.<br><br>300 founding member spots. One-time $129.</p>
+    <a href="https://deleteafteridie.com/#pricing" class="cta-btn">Protect Your Digital Life →</a>
+  </div>
+
+</div>
+</body>
+</html>

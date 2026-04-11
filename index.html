@@ -4,15 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Delete After I Die — Dead Man's Switch App | Auto-Delete Accounts & Files</title>
-<meta name="description" content="Automatically deletes your Gmail, dating apps, browser history, photos, and files if you stop checking in. The dead man's switch for your digital life. Mac & Windows.">
+<meta name="description" content="Automatically deletes your Gmail, dating apps, AI chat history, browser history, photos, and files if you stop checking in. The dead man's switch for your digital life. Mac & Windows.">
 <meta property="og:title" content="Delete After I Die">
 <meta property="og:description" content="Your secrets die with you. The dead man's switch for your digital life.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://deleteafteridie.com">
 <meta property="og:image" content="https://deleteafteridie.com/og-image.jpg">
-<meta name="keywords" content="dead man's switch app, delete data after death, automatically delete accounts after death, digital privacy after death, delete accounts when you die, dead man switch delete files, app that deletes everything when you die">
+<meta name="keywords" content="dead man's switch app, delete data after death, automatically delete accounts after death, digital privacy after death, delete accounts when you die, delete AI chat history">
 <link rel="canonical" href="https://deleteafteridie.com">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EBK4LSZTED"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EBK4LSZTED');
+  function trackEvent(action, category, label) {
+    gtag('event', action, { event_category: category, event_label: label });
+  }
+</script>
+
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -274,11 +288,12 @@
 
   .step-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
+    font-size: 52px;
     color: var(--red);
-    opacity: 0.3;
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 8px;
     line-height: 1;
-    margin-bottom: 12px;
   }
 
   .step h3 {
@@ -664,14 +679,17 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">DELETE AFTER I <span>DIE</span></a>
+  <a href="#" class="nav-logo">
+    <img src="/logo.png" alt="Delete After I Die" style="height:36px;width:36px;border-radius:6px;margin-right:10px;vertical-align:middle;background:#050507;">
+    DELETE AFTER I <span>DIE</span>
+  </a>
   <a href="#pricing" class="nav-cta">Get Protected →</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-tagline">Everyone has something to delete</div>
-  <h1>YOUR SECRETS<br><span class="line-red">DIE WITH YOU</span></h1>
+  <h1>YOUR SECRETS<br><span class="line-red">DIE</span> WITH YOU</h1>
   <p class="hero-sub">Your dating apps. Your DMs. Your email. Your photos. Your files. Your browser history. If you stop checking in, it all disappears.</p>
   <div class="hero-ctas">
     <a href="#pricing" class="btn-primary">Become a Founding Member →</a>
@@ -693,6 +711,7 @@
     <span class="ticker-item">GOOGLE DRIVE <span>✕</span></span>
     <span class="ticker-item">DISCREET APPS <span>✕</span></span>
     <span class="ticker-item">SEARCH HISTORY <span>✕</span></span>
+    <span class="ticker-item">AI CHAT HISTORY <span>✕</span></span>
     <span class="ticker-item">DATING APPS <span>✕</span></span>
     <span class="ticker-item">INSTAGRAM DMS <span>✕</span></span>
     <span class="ticker-item">BROWSER HISTORY <span>✕</span></span>
@@ -703,6 +722,7 @@
     <span class="ticker-item">GOOGLE DRIVE <span>✕</span></span>
     <span class="ticker-item">DISCREET APPS <span>✕</span></span>
     <span class="ticker-item">SEARCH HISTORY <span>✕</span></span>
+    <span class="ticker-item">AI CHAT HISTORY <span>✕</span></span>
   </div>
 </div>
 
@@ -710,7 +730,7 @@
 <section class="section" id="how">
   <div class="container">
     <div class="section-label reveal">How It Works</div>
-    <h2 class="section-title reveal">Three steps.<br>Ten minutes.<br>Permanent peace of mind.</h2>
+    <h2 class="section-title reveal">Three steps.<br>Ten minutes.<br><span style="color:var(--red);">Permanent</span> peace of mind.</h2>
     <div class="steps">
       <div class="step reveal">
         <div class="step-num">01</div>
@@ -725,11 +745,34 @@
       <div class="step reveal">
         <div class="step-num">03</div>
         <h3>Disappear</h3>
-        <p>If you ever stop tapping — because you can't — the app silently erases everything you flagged. Your dating profiles. Your DMs. Your photos. Your browser history. Gone. Your secrets die with you.</p>
+        <p>If you ever stop tapping — because you can't — the app silently erases everything you flagged. Your dating profiles. Your DMs. Your photos. Your browser history. <span style="color:var(--red);">Gone.</span> Your secrets die with you.</p>
       </div>
     </div>
-    <div class="reveal" style="text-align:center; margin-top:56px;">
-      <img src="/iphone-mockup.svg" alt="iPhone widget showing DAID check-in timer" style="max-width:340px; width:100%; height:auto; filter:drop-shadow(0 20px 60px rgba(0,0,0,0.5));">
+    <div class="reveal" style="margin-top:56px;text-align:center;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Check-In App</p>
+      <p style="font-size:13px;color:var(--bone-dim);margin-bottom:24px;">Available on iOS and Android. One tap resets your timer.</p>
+      <svg viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg" style="max-width:200px;margin:0 auto;display:block;" role="img" aria-label="iPhone showing DAID check-in app">
+        <rect x="8" y="8" width="264" height="504" rx="40" fill="#0C0C10" stroke="#2a2a32" stroke-width="1.5"/>
+        <rect x="20" y="20" width="240" height="480" rx="32" fill="#050507"/>
+        <rect x="96" y="20" width="88" height="26" rx="13" fill="#0C0C10"/>
+        <text x="140" y="74" font-family="Arial,sans-serif" font-size="11" fill="#8A8680" letter-spacing="2" text-anchor="middle">DELETE AFTER I DIE</text>
+        <rect x="110" y="84" width="60" height="18" rx="9" fill="rgba(200,58,58,0.15)"/>
+        <circle cx="122" cy="93" r="4" fill="#C83A3A"/>
+        <text x="150" y="97" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#C83A3A" text-anchor="middle">ARMED</text>
+        <text x="140" y="155" font-family="Arial Narrow,Arial,sans-serif" font-size="48" font-weight="700" fill="#E8E4DE" text-anchor="middle">06:23</text>
+        <text x="140" y="175" font-family="Arial,sans-serif" font-size="9" fill="#8A8680" text-anchor="middle" letter-spacing="2">DAYS : HOURS</text>
+        <line x1="36" y1="194" x2="244" y2="194" stroke="#1E1E26" stroke-width="0.5"/>
+        <text x="140" y="218" font-family="Arial,sans-serif" font-size="11" fill="#8A8680" text-anchor="middle">Next check-in by Wed Apr 16</text>
+        <rect x="36" y="234" width="208" height="52" rx="10" fill="#C83A3A"/>
+        <text x="140" y="265" font-family="Arial Narrow,Arial,sans-serif" font-size="18" fill="white" text-anchor="middle" letter-spacing="1">I'M STILL HERE →</text>
+        <text x="140" y="308" font-family="Arial,sans-serif" font-size="10" fill="#8A8680" text-anchor="middle">Tap to reset your timer</text>
+        <circle cx="48" cy="336" r="4" fill="#4a9060"/>
+        <text x="58" y="340" font-family="Arial,sans-serif" font-size="10" fill="#8A8680">Desktop: connected</text>
+        <circle cx="48" cy="356" r="4" fill="#4a9060"/>
+        <text x="58" y="360" font-family="Arial,sans-serif" font-size="10" fill="#8A8680">Notifications: enabled</text>
+        <rect x="100" y="480" width="80" height="4" rx="2" fill="#2a2a32"/>
+      </svg>
+      <p style="font-size:12px;color:var(--bone-dim);margin-top:16px;max-width:280px;margin-left:auto;margin-right:auto;line-height:1.6;">Phase 1 check-in app. Home screen widget with live countdown coming in <span style="color:var(--red);">v2.0</span>.</p>
     </div>
   </div>
 </section>
@@ -737,7 +780,7 @@
 <!-- THE QUESTION -->
 <section class="question">
   <div class="container">
-    <h2 class="reveal">What would your family find on your phone if you died tomorrow?</h2>
+    <h2 class="reveal">What would your family find on your phone if you <span style="color:var(--red);">died tomorrow</span>?</h2>
     <p class="reveal">Everyone has something. A conversation. A photo. A search. An app. Something that's nobody's business but yours. Delete After I Die makes sure it stays that way.</p>
   </div>
 </section>
@@ -760,10 +803,10 @@
       <div class="delete-item reveal"><div class="delete-icon">🌐</div><div><div class="name">Browser History</div><div class="type">History, autofill, cookies</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">💻</div><div><div class="name">Local Files</div><div class="type">Any folders you choose</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">🔐</div><div><div class="name">OkCupid</div><div class="type">Full account deletion</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">✈️</div><div><div class="name">Telegram</div><div class="type">Messages + account</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">👻</div><div><div class="name">Snapchat</div><div class="type">Full account deletion</div></div></div>
-      <div class="delete-item reveal"><div class="delete-icon">🗨️</div><div><div class="name">Reddit</div><div class="type">Posts, comments, account</div></div></div>
-      <div class="coming-soon reveal">Facebook · Twitter/X · Discord · TikTok · LinkedIn — coming soon</div>
+      <div class="delete-item reveal"><div class="delete-icon">🤖</div><div><div class="name">AI Chat History</div><div class="type">ChatGPT, Claude, Gemini, Grok + more</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">📍</div><div><div class="name">Location History</div><div class="type">Maps, check-ins, travel data</div></div></div>
+      <div class="delete-item reveal"><div class="delete-icon">▶️</div><div><div class="name">YouTube History</div><div class="type">Watch history, searches, likes</div></div></div>
+      <div class="coming-soon reveal">Facebook · Twitter/X · Reddit · Discord · TikTok · LinkedIn · Perplexity · DeepSeek · Copilot — coming soon</div>
     </div>
   </div>
 </section>
@@ -772,39 +815,18 @@
 <section class="question">
   <div class="container">
     <div class="section-label reveal">Your Privacy</div>
-    <h2 class="reveal">Nothing leaves your computer. Ever.</h2>
+    <h2 class="reveal">Nothing leaves your computer. <span style="color:var(--red);">Ever.</span></h2>
     <p class="reveal" style="margin-top: 16px;">Your passwords and login sessions are stored on your machine, encrypted by your operating system's built-in security. Our servers store exactly one thing: the timestamp of your last check-in. That's it. We never see your credentials. We never access your accounts. Everything runs locally on your desktop.</p>
   </div>
 </section>
 
-<!-- ABOUT THE FOUNDER -->
-<section class="section" id="founder">
-  <div class="container">
-    <div style="max-width:680px; margin:0 auto; display:flex; gap:48px; align-items:center; flex-wrap:wrap;">
-      <div style="flex-shrink:0; text-align:center;">
-        <!-- Replace src with actual photo -->
-        <div style="width:120px; height:120px; border-radius:50%; background:#0C0C10; border:2px solid #C83A3A; margin:0 auto 12px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A;">BY</span>
-        </div>
-        <p style="font-size:13px; color:#8A8680; margin:0;">Brad Yeager</p>
-        <p style="font-size:12px; color:#1E1E26; margin:4px 0 0; color:#8A8680; opacity:0.6;">San Diego, CA</p>
-      </div>
-      <div style="flex:1; min-width:260px;">
-        <div class="section-label" style="margin-bottom:12px;">Why I Built This</div>
-        <p style="font-size:17px; font-weight:300; line-height:1.7; color:#E8E4DE; margin-bottom:16px;">I'm not a software engineer. I'm a gym owner in San Diego who had a conversation with a client that I couldn't stop thinking about.</p>
-        <p style="font-size:15px; font-weight:300; line-height:1.7; color:#8A8680; margin-bottom:16px;">He'd just gone through his father's phone after the funeral. What he found changed how his family remembered him. He said: <em style="color:#E8E4DE;">"There should be an app that just... deletes everything. Before anyone finds it."</em></p>
-        <p style="font-size:15px; font-weight:300; line-height:1.7; color:#8A8680;">That conversation stuck. I spent six months building it with AI tools, validated it with five AI models across twelve rounds of review, and I'm offering it to the first 300 people who believe their digital life deserves the same privacy as their physical one.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PRICING -->
 <section class="section" id="pricing">
   <div class="container">
     <div class="section-label reveal" style="text-align:center;">Founding Member Pricing</div>
-    <h2 class="section-title reveal" style="text-align:center;">Limited to 300 members.</h2>
-    <p class="reveal" style="text-align:center; color:#8A8680; font-size:15px; font-weight:300; max-width:520px; margin:-32px auto 40px; line-height:1.7;">Founding member pricing ends <strong style="color:#E8E4DE;">May 11, 2026</strong>. After that, DAID moves to <strong style="color:#E8E4DE;">$99/year</strong> on a subscription. This is your only chance to lock in lifetime access at a one-time price.</p>
+    <h2 class="section-title reveal" style="text-align:center;">Limited to <span style="color:var(--red);">300</span> members.</h2>
+    <p class="reveal" style="text-align:center;color:var(--bone-dim);font-size:15px;margin-top:-24px;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">After 300 spots, pricing moves to <strong style="color:var(--bone);">$99/year</strong>. Founding members pay once, keep access forever. <span style="color:var(--red);font-weight:600;">That's a $99 annual fee you'll never pay.</span></p>
     <div class="pricing-card reveal">
       <div class="pricing-badge">Founding Member — Lifetime Access</div>
       <div class="pricing-price"><sup>$</sup>129</div>
@@ -820,16 +842,16 @@
         <li>Dry run mode — preview before you commit</li>
         <li>All future v1 updates included</li>
       </ul>
-      <div id="pricingCountdown" style="background:#050507; border:1px solid #1E1E26; border-radius:8px; padding:16px; margin-bottom:24px; text-align:center;">
-        <div style="font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#C83A3A; margin-bottom:10px;">Founding Price Expires In</div>
-        <div style="display:flex; justify-content:center; gap:16px;">
-          <div style="text-align:center;"><span id="cd-days" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Days</span></div>
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A; line-height:1.2;">:</div>
-          <div style="text-align:center;"><span id="cd-hours" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Hours</span></div>
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A; line-height:1.2;">:</div>
-          <div style="text-align:center;"><span id="cd-mins" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Mins</span></div>
-          <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#C83A3A; line-height:1.2;">:</div>
-          <div style="text-align:center;"><span id="cd-secs" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:#E8E4DE; display:block;">00</span><span style="font-size:10px; color:#8A8680; letter-spacing:2px; text-transform:uppercase;">Secs</span></div>
+      <div id="pricingCountdown" style="background:#050507;border:1px solid #1E1E26;border-radius:8px;padding:16px;margin-bottom:24px;text-align:center;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#C83A3A;margin-bottom:10px;">Founding Price Expires In</div>
+        <div style="display:flex;justify-content:center;gap:12px;align-items:flex-end;">
+          <div style="text-align:center;min-width:44px;"><span id="cd-days" style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#E8E4DE;display:block;line-height:1;">00</span><span style="font-size:10px;color:#8A8680;letter-spacing:2px;text-transform:uppercase;">Days</span></div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#C83A3A;line-height:1;padding-bottom:18px;">:</span>
+          <div style="text-align:center;min-width:44px;"><span id="cd-hours" style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#E8E4DE;display:block;line-height:1;">00</span><span style="font-size:10px;color:#8A8680;letter-spacing:2px;text-transform:uppercase;">Hours</span></div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#C83A3A;line-height:1;padding-bottom:18px;">:</span>
+          <div style="text-align:center;min-width:44px;"><span id="cd-mins" style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#E8E4DE;display:block;line-height:1;">00</span><span style="font-size:10px;color:#8A8680;letter-spacing:2px;text-transform:uppercase;">Mins</span></div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#C83A3A;line-height:1;padding-bottom:18px;">:</span>
+          <div style="text-align:center;min-width:44px;"><span id="cd-secs" style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#E8E4DE;display:block;line-height:1;">00</span><span style="font-size:10px;color:#8A8680;letter-spacing:2px;text-transform:uppercase;">Secs</span></div>
         </div>
       </div>
       <a href="https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800" class="pricing-cta" id="buyBtn">Join the Founding 300 →</a>
@@ -849,6 +871,10 @@
     <div class="section-label reveal">FAQ</div>
     <h2 class="section-title reveal">Questions you're<br>already thinking.</h2>
     <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">Is this for real?</div>
+        <div class="faq-a"><strong>Absolutely.</strong> <span style="color:#C83A3A;font-weight:700;">7,500 Americans die every day</span> — most of them with phones full of things their families will find. Search history going back years. Dating profiles still active. Instagram DMs still readable. AI chat conversations they thought were private. Browser history documenting every private thought they've had. Every single one of those people thought they had more time. <strong>You still can.</strong> Delete After I Die is the only tool that combines an inactivity trigger with automated deletion across your accounts — so when you stop checking in, everything you've flagged disappears automatically.</div>
+      </div>
       <div class="faq-item reveal">
         <div class="faq-q">What if I accidentally don't check in?</div>
         <div class="faq-a">The app sends escalating notifications — push, email, and SMS — as your timer counts down. At 75%, 50%, 25%, and 10% remaining, you'll be reminded. A trusted contact can also be notified before deletion fires. Plus, there's a configurable grace period and a 60-second abort countdown on your desktop before anything gets deleted.</div>
@@ -874,10 +900,6 @@
         <div class="faq-a">Yes. You're using browser automation to exercise your existing right to delete your own accounts and data. It's functionally identical to you sitting down and clicking "Delete Account" yourself — just automated. We provide a privacy tool, not a service.</div>
       </div>
       <div class="faq-item reveal">
-        <div class="faq-q">Is this for real?</div>
-        <div class="faq-a">Yes. This is a real product built by a real person in San Diego. It uses browser automation — the same technology behind password managers and autofill tools — to log into your accounts and execute deletion workflows you've configured in advance. It's not magic. It's not a joke. It's the thing you've thought about at 2 AM and assumed didn't exist. It does now.</div>
-      </div>
-      <div class="faq-item reveal">
         <div class="faq-q">What's a "Founding Member"?</div>
         <div class="faq-a">The first 300 customers get lifetime access for a one-time payment of $129. After that, the product moves to annual pricing ($99/year). Founding members keep lifetime access to all v1 features and maintenance updates. New platforms added later may be part of a premium tier.</div>
       </div>
@@ -885,16 +907,35 @@
   </div>
 </section>
 
+<!-- ABOUT THE FOUNDER -->
+<section class="section" id="founder">
+  <div class="container">
+    <div style="max-width:680px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap;">
+      <div style="flex-shrink:0;text-align:center;">
+        <img src="/logo.png" alt="Brad Yeager, founder of Delete After I Die" style="width:120px;height:120px;border-radius:50%;border:2px solid #C83A3A;object-fit:cover;object-position:center top;display:block;margin:0 auto 12px;background:#0C0C10;">
+        <p style="font-size:13px;color:#8A8680;margin:0;font-weight:500;">Brad Yeager</p>
+        <p style="font-size:12px;color:#8A8680;margin:4px 0 0;opacity:0.6;">San Diego, CA</p>
+      </div>
+      <div style="flex:1;min-width:260px;">
+        <div class="section-label" style="margin-bottom:12px;">Why I Built This</div>
+        <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a gym owner in San Diego who had a conversation I couldn't stop thinking about.</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client had just gone through his father's phone after the funeral. What he found changed how the whole family remembered him. He said: <em style="color:#E8E4DE;">"There should be an app that just deletes everything. Before anyone can find it."</em></p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I spent six months building it with AI tools. I'm offering it to the first 300 people who believe their digital life deserves the same privacy as their physical one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WAITLIST / EMAIL CAPTURE -->
 <section class="waitlist" id="waitlist">
-  <h2 class="reveal">They're Going to Go<br>Through Everything.</h2>
-  <p class="reveal">"The Digital Dead Man's Playbook: What Survives You — and How to Make Sure It Doesn't." Free PDF, no spam, unsubscribe anytime.</p>
+  <h2 class="reveal">"They're Going to Go <span style="color:var(--red);">Through Everything."</span></h2>
+  <p class="reveal">Get the free Digital Dead Man's Playbook — what survives you, platform by platform, and how to make sure it doesn't. No spam, unsubscribe anytime.</p>
   <form class="email-form reveal" id="emailForm">
     <input type="email" placeholder="Your email address" required id="emailInput">
-    <button type="submit">Get the Playbook →</button>
+    <button type="submit">Send Me the Playbook →</button>
   </form>
   <p class="email-note reveal">Be one of the first 300 to get protected.</p>
-  <div class="form-success" id="formSuccess">You're in. Check your email for the playbook. 🖤</div>
+  <div class="form-success" id="formSuccess">You're in. Check your inbox — the playbook is on its way. 🖤</div>
 </section>
 
 <!-- FOOTER -->
@@ -903,9 +944,9 @@
     <a href="mailto:brad@bradyeager.com">Contact</a>
     <a href="https://instagram.com/delete.after.i.die" target="_blank">Instagram</a>
     <a href="#faq">FAQ</a>
-    <a href="/terms">Terms of Service</a>
-    <a href="/privacy">Privacy Policy</a>
-    <a href="/refunds">Refund Policy</a>
+    <a href="/terms">Terms</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/refunds">Refunds</a>
   </div>
   <p>© 2026 Delete After I Die. All rights reserved.</p>
   <p style="margin-top: 8px; font-size: 11px;">Your secrets die with you. ☠</p>
@@ -923,45 +964,46 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// FAQ toggles
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
+// FAQ toggles with GA4
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = q.parentElement;
     item.classList.toggle('open');
+    if (typeof trackEvent === 'function') trackEvent('faq_click','engagement',q.textContent.trim().substring(0,50));
   });
 });
 
-// Email form — connected to Brevo
-document.getElementById('emailForm').addEventListener('submit', async function(e) {
+// Email form — Brevo (LIVE)
+document.getElementById('emailForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const email = document.getElementById('emailInput').value;
-  const form = this;
-  const btn = form.querySelector('button');
+  var email = document.getElementById('emailInput').value;
+  var btn = this.querySelector('button');
+  var orig = btn.textContent;
   btn.textContent = 'Sending...';
   btn.disabled = true;
-
-  try {
-    const k1 = 'xkeysib-f462df7b10d7fab2b0257638fe338f47936e1b';
-    const k2 = '8760e86d291f888df1d9cd648e-7DfYSiLYGv0Kd5Ws';
-    await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': k1 + k2
-      },
-      body: JSON.stringify({
-        email: email,
-        listIds: [8],
-        attributes: { LEAD_SOURCE: 'daid_playbook', LEAD_MAGNET: 'digital_dead_mans_playbook' },
-        updateEnabled: true
-      })
-    });
-  } catch(err) {
-    // Silently fail — still show success to user
-  }
-
-  form.style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+  fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': (function(){var a='xsmtpsib-f462df7b10d7fab2b0257638fe338f47936e1b';var b='8760e86d291f888df1d9cd648e-1NavUwwmCN8PHVX8';return a+b;})()
+    },
+    body: JSON.stringify({
+      email: email,
+      listIds: [10],
+      updateEnabled: true,
+      attributes: { SOURCE: 'landing_page_playbook', SIGNUP_DATE: new Date().toISOString().split('T')[0] }
+    })
+  })
+  .then(function(r) {
+    document.getElementById('emailForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    if (typeof trackEvent === 'function') trackEvent('email_submit','lead','playbook_signup');
+  })
+  .catch(function() {
+    btn.textContent = orig;
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  });
 });
 
 // Smooth scroll for anchor links
@@ -973,128 +1015,95 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Dynamic spot counter
-async function loadSpotCount() {
-  try {
-    const res = await fetch('/api/spots');
-    const data = await res.json();
-    const el = document.getElementById('spotsLeft');
-    if (el && data.remaining !== undefined) {
-      el.textContent = data.remaining;
-    }
-  } catch(e) {
-    // Fallback: keep whatever number is already showing
-    console.log('Spot counter unavailable, using fallback');
-  }
-}
-loadSpotCount();
+// Spot counter
+(function(){
+  fetch('/api/spots').then(function(r){return r.json();}).then(function(d){
+    var el=document.getElementById('spotsLeft');
+    if(el&&d.remaining!==undefined)el.textContent=d.remaining;
+  }).catch(function(){});
+})();
 
-// Assent modal logic
-const buyBtn = document.getElementById('buyBtn');
-const modal = document.getElementById('assentModal');
-const continueBtn = document.getElementById('assentContinue');
-const cancelBtn = document.getElementById('assentCancel');
-const checks = document.querySelectorAll('.assent-check');
-const STRIPE_URL = 'https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800';
-
-buyBtn.addEventListener('click', function(e) {
-  e.preventDefault();
-  modal.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-});
-
-checks.forEach(cb => {
-  cb.addEventListener('change', () => {
-    const allChecked = Array.from(checks).every(c => c.checked);
-    continueBtn.disabled = !allChecked;
-    continueBtn.style.background = allChecked ? '#C83A3A' : '#333';
-    continueBtn.style.color = allChecked ? '#fff' : '#666';
-    continueBtn.style.cursor = allChecked ? 'pointer' : 'not-allowed';
+// Assent modal
+(function() {
+  var STRIPE = 'https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800';
+  var btn = document.getElementById('buyBtn');
+  var modal = document.getElementById('assentModal');
+  var cont = document.getElementById('assentContinue');
+  var cancel = document.getElementById('assentCancel');
+  if (!btn || !modal) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (typeof trackEvent === 'function') trackEvent('modal_open','conversion','assent_modal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
   });
-});
-
-continueBtn.addEventListener('click', function() {
-  if (this.disabled) return;
-  // Record consent
-  const record = {
-    event: 'checkout_assent',
-    timestamp: new Date().toISOString(),
-    terms_version: '4.0',
-    checkboxes: ['irreversible_deletion','failure_risk','local_storage','terms_privacy','age_legal'],
-    user_agent: navigator.userAgent,
-    referrer: document.referrer
-  };
-  try { localStorage.setItem('daid_consent_' + Date.now(), JSON.stringify(record)); } catch(e) {}
-  window.location.href = STRIPE_URL;
-});
-
-function closeModal() {
-  modal.style.display = 'none';
-  document.body.style.overflow = '';
-  checks.forEach(c => { c.checked = false; });
-  continueBtn.disabled = true;
-  continueBtn.style.background = '#333';
-  continueBtn.style.color = '#666';
-  continueBtn.style.cursor = 'not-allowed';
-}
-
-cancelBtn.addEventListener('click', function(e) { e.preventDefault(); closeModal(); });
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
-modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
-
-// Countdown timer — set your target date here
-const DEADLINE = new Date('2026-05-11T23:59:59'); // 30 days from launch — update as needed
-function updateCountdown() {
-  const now = new Date();
-  const diff = DEADLINE - now;
-  if (diff <= 0) {
-    document.getElementById('pricingCountdown').innerHTML = '<p style="color:#C83A3A; font-family:Bebas Neue; font-size:20px; letter-spacing:2px;">FOUNDING PRICING CLOSED</p>';
-    return;
+  function syncBtn() {
+    var all = Array.from(document.querySelectorAll('.assent-check')).every(function(c){return c.checked;});
+    cont.disabled = !all;
+    cont.style.background = all ? '#C83A3A' : '#333';
+    cont.style.color = all ? '#fff' : '#666';
+    cont.style.cursor = all ? 'pointer' : 'not-allowed';
   }
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
+  document.querySelectorAll('.assent-check').forEach(function(c){c.addEventListener('change',syncBtn);});
+  cont.addEventListener('click', function() {
+    if (this.disabled) return;
+    try{localStorage.setItem('daid_consent_'+Date.now(),JSON.stringify({ts:new Date().toISOString(),v:'4.0',ua:navigator.userAgent}));}catch(e){}
+    if (typeof trackEvent === 'function') trackEvent('checkout_start','conversion','modal_complete');
+    window.location.href = STRIPE;
+  });
+  function close() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.querySelectorAll('.assent-check').forEach(function(c){c.checked=false;});
+    syncBtn();
+  }
+  cancel.addEventListener('click',function(e){e.preventDefault();close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  modal.addEventListener('click',function(e){if(e.target===modal)close();});
+})();
+
+// Countdown timer
+(function() {
+  var DEADLINE = new Date('2026-06-10T23:59:59');
+  function tick() {
+    var diff = DEADLINE - new Date();
+    var el = document.getElementById('pricingCountdown');
+    if (!el) return;
+    if (diff <= 0) {
+      el.innerHTML = '<p style="color:#C83A3A;font-family:Bebas Neue,sans-serif;font-size:20px;letter-spacing:2px;text-align:center;padding:16px;">FOUNDING PRICING CLOSED</p>';
+      return;
+    }
+    var d = Math.floor(diff/86400000);
+    var h = Math.floor((diff%86400000)/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    var s = Math.floor((diff%60000)/1000);
+    function p(n){return String(n).padStart(2,'0');}
+    var els = {days:'cd-days',hours:'cd-hours',mins:'cd-mins',secs:'cd-secs'};
+    var vals = {days:d,hours:h,mins:m,secs:s};
+    Object.keys(els).forEach(function(k){
+      var e = document.getElementById(els[k]);
+      if(e) e.textContent = p(vals[k]);
+    });
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 </script>
 
-<div id="assentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); z-index:10000; overflow-y:auto; padding:20px;">
-  <div style="max-width:560px; margin:40px auto; background:#0C0C10; border:1px solid #1E1E26; border-top:3px solid #C83A3A; border-radius:12px; padding:40px 36px;">
-    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:32px; color:#E8E4DE; margin-bottom:8px; letter-spacing:1px;">Before You Continue</h2>
-    <p style="font-size:14px; color:#8A8680; margin-bottom:28px; line-height:1.6;">Please confirm you understand what this product does. All five must be checked.</p>
-
-    <div id="assentBoxes" style="display:flex; flex-direction:column; gap:16px; margin-bottom:32px;">
-      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
-        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
-        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I understand that deletion is <strong>potentially permanent and irreversible</strong>. I will maintain independent backups of anything I cannot afford to lose.</span>
-      </label>
-      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
-        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
-        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I understand the Service may <strong>fail to delete content</strong> if a platform changes its interface, or may delete <strong>earlier than expected</strong> if I misconfigure my settings.</span>
-      </label>
-      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
-        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
-        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I understand my credentials are <strong>stored only on my computer</strong> — never on Delete After I Die's servers.</span>
-      </label>
-      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
-        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
-        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I have read and agree to the <a href="/terms" style="color:#C83A3A;">Terms of Service</a>, <a href="/privacy" style="color:#C83A3A;">Privacy Policy</a>, and <a href="/refunds" style="color:#C83A3A;">Refund Policy</a>.</span>
-      </label>
-      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
-        <input type="checkbox" class="assent-check" style="width:18px; height:18px; margin-top:3px; accent-color:#C83A3A; flex-shrink:0;">
-        <span style="font-size:14px; color:#E8E4DE; line-height:1.6;">I confirm I am at least <strong>18 years old</strong> and am not using this Service to destroy evidence subject to any legal hold or investigation.</span>
-      </label>
+<div id="assentModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:10000;overflow-y:auto;padding:20px;">
+  <div style="max-width:560px;margin:40px auto;background:#0C0C10;border:1px solid #1E1E26;border-top:3px solid #C83A3A;border-radius:12px;padding:40px 36px;">
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#E8E4DE;margin-bottom:8px;">Before You Continue</h2>
+    <p style="font-size:14px;color:#8A8680;margin-bottom:28px;line-height:1.6;">All five must be checked before proceeding.</p>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:32px;">
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" class="assent-check" style="width:18px;height:18px;margin-top:3px;accent-color:#C83A3A;flex-shrink:0;"><span style="font-size:14px;color:#E8E4DE;line-height:1.6;">I understand deletion is <strong>potentially permanent and irreversible</strong>. I will maintain independent backups of anything I cannot afford to lose.</span></label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" class="assent-check" style="width:18px;height:18px;margin-top:3px;accent-color:#C83A3A;flex-shrink:0;"><span style="font-size:14px;color:#E8E4DE;line-height:1.6;">I understand the Service may <strong>fail to delete</strong> if a platform changes, or delete <strong>earlier than expected</strong> if I misconfigure my settings.</span></label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" class="assent-check" style="width:18px;height:18px;margin-top:3px;accent-color:#C83A3A;flex-shrink:0;"><span style="font-size:14px;color:#E8E4DE;line-height:1.6;">I understand my credentials are <strong>stored only on my computer</strong> — never on Delete After I Die's servers.</span></label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" class="assent-check" style="width:18px;height:18px;margin-top:3px;accent-color:#C83A3A;flex-shrink:0;"><span style="font-size:14px;color:#E8E4DE;line-height:1.6;">I have read and agree to the <a href="/terms" style="color:#C83A3A;">Terms of Service</a>, <a href="/privacy" style="color:#C83A3A;">Privacy Policy</a>, and <a href="/refunds" style="color:#C83A3A;">Refund Policy</a>.</span></label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" class="assent-check" style="width:18px;height:18px;margin-top:3px;accent-color:#C83A3A;flex-shrink:0;"><span style="font-size:14px;color:#E8E4DE;line-height:1.6;">I confirm I am at least <strong>18 years old</strong> and not using this Service to destroy evidence subject to any legal hold.</span></label>
     </div>
-
-    <button id="assentContinue" disabled style="width:100%; padding:18px; background:#333; color:#666; border:none; border-radius:8px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; cursor:not-allowed; transition:all 0.3s;">I Understand — Continue to Checkout →</button>
-    <p style="text-align:center; font-size:12px; color:#8A8680; margin-top:12px;">You will be redirected to Stripe's secure checkout. $129 one-time payment.</p>
-    <p style="text-align:center; margin-top:8px;"><a href="#" id="assentCancel" style="font-size:12px; color:#8A8680;">Cancel, take me back</a></p>
+    <button id="assentContinue" disabled style="width:100%;padding:18px;background:#333;color:#666;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;cursor:not-allowed;transition:all 0.3s;">I Understand — Continue to Checkout →</button>
+    <p style="text-align:center;font-size:12px;color:#8A8680;margin-top:12px;">Redirecting to Stripe secure checkout. $129 one-time.</p>
+    <p style="text-align:center;margin-top:8px;"><a href="#" id="assentCancel" style="font-size:12px;color:#8A8680;">Cancel</a></p>
   </div>
 </div>
 
