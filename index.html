@@ -129,9 +129,16 @@
   .hero::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 100%;
-    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(200,58,58,0.06) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background-image: url('/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.04;
     pointer-events: none;
   }
 
@@ -744,7 +751,7 @@
   </p>
 
   <div class="hero-ctas">
-    <a href="#pricing" class="btn-primary">Become a Founding Member →</a>
+    <a href="#pricing" class="btn-primary">Get Protected →</a>
     <a href="#how" class="btn-secondary">How It Works</a>
   </div>
   <p class="hero-note"><strong>300 spots only</strong> — Founding member pricing won't last.</p>
@@ -789,7 +796,7 @@
 <!-- HOW IT WORKS -->
 <section class="section" id="how">
   <div class="container">
-    <div style="display:flex;gap:60px;align-items:flex-start;flex-wrap:wrap;">
+    <div style="display:flex;gap:60px;align-items:stretch;flex-wrap:wrap;">
 
       <div style="flex:1;min-width:300px;">
         <div class="logo-divider reveal">
@@ -817,9 +824,9 @@
         </div>
       </div>
 
-      <div style="flex-shrink:0;text-align:center;padding-top:40px;" class="reveal">
+      <div style="flex-shrink:0;text-align:center;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding-top:0;" class="reveal">
         <p style="font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Check-In App</p>
-        <svg viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg" style="width:300px;display:block;margin:0 auto;" role="img" aria-label="iPhone showing DAID check-in app">
+        <svg viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg" style="width:280px;height:auto;max-height:560px;display:block;margin:0 auto;" role="img" aria-label="iPhone showing DAID check-in app">
           <rect x="8" y="8" width="264" height="504" rx="40" fill="#0C0C10" stroke="#2a2a32" stroke-width="1.5"/>
           <rect x="20" y="20" width="240" height="480" rx="32" fill="#050507"/>
           <rect x="96" y="20" width="88" height="26" rx="13" fill="#0C0C10"/>
@@ -856,7 +863,7 @@
 <!-- THE QUESTION -->
 <section class="question">
   <div class="container">
-    <h2 class="reveal">What would your <span style="color:var(--red);">family find</span> if you <span style="color:var(--red);">died tomorrow</span>?</h2>
+    <h2 class="reveal">What would your <span style="color:var(--red);">family find</span> if you <span style="color:var(--red);">died tomorrow</span><span style="color:var(--red);">?</span></h2>
     <p class="reveal">Everyone has something. A conversation. A photo. A search. An app. Something that's nobody's business but yours. Delete After I Die makes sure it stays that way.</p>
   </div>
 </section>
@@ -887,7 +894,34 @@
       <div class="delete-item reveal"><div class="delete-icon">🔐</div><div><div class="name">OkCupid</div><div class="type">Full account deletion</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">🤫</div><div><div class="name">Ashley Madison</div><div class="type">Full account deletion</div></div></div>
       <div class="delete-item reveal"><div class="delete-icon">📱</div><div><div class="name">Grindr</div><div class="type">Full account deletion</div></div></div>
-      <div class="coming-soon reveal">Facebook · Twitter/X · Reddit · Discord · TikTok · LinkedIn · Perplexity · DeepSeek · Copilot — coming soon</div>
+      <div class="delete-item reveal" style="opacity:0.6;">
+        <div class="delete-icon">📘</div>
+        <div>
+          <div class="name">Facebook</div>
+          <div class="type" style="color:var(--red);font-weight:600;font-size:11px;">Coming Soon</div>
+        </div>
+      </div>
+      <div class="delete-item reveal" style="opacity:0.6;">
+        <div class="delete-icon">𝕏</div>
+        <div>
+          <div class="name">Twitter / X</div>
+          <div class="type" style="color:var(--red);font-weight:600;font-size:11px;">Coming Soon</div>
+        </div>
+      </div>
+      <div class="delete-item reveal" style="opacity:0.6;">
+        <div class="delete-icon">🎵</div>
+        <div>
+          <div class="name">TikTok</div>
+          <div class="type" style="color:var(--red);font-weight:600;font-size:11px;">Coming Soon</div>
+        </div>
+      </div>
+      <div class="delete-item reveal" style="opacity:0.6;">
+        <div class="delete-icon">🗨️</div>
+        <div>
+          <div class="name">Reddit</div>
+          <div class="type" style="color:var(--red);font-weight:600;font-size:11px;">Coming Soon</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -913,6 +947,9 @@
       <span style="color:var(--red);font-weight:600;">That's a $99 annual fee you will never pay.</span>
     </p>
     <div class="pricing-card reveal">
+      <div style="text-align:center;margin-bottom:20px;position:relative;">
+        <img src="/logo.png" alt="" style="width:64px;height:64px;border-radius:12px;opacity:0.9;">
+      </div>
       <div class="pricing-badge">Founding Member — Lifetime Access</div>
       <div class="pricing-price"><sup>$</sup>129</div>
       <div class="pricing-term">One-time payment. Lifetime protection. No subscription.</div>
@@ -943,7 +980,7 @@
           <div style="text-align:center;min-width:44px;"><span id="cd-secs" style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#E8E4DE;display:block;line-height:1;">00</span><span style="font-size:10px;color:#8A8680;letter-spacing:2px;text-transform:uppercase;">Secs</span></div>
         </div>
       </div>
-      <a href="https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800" class="pricing-cta" id="buyBtn">Join the Founding 300 →</a>
+      <a href="https://buy.stripe.com/dRm14o9CRc5zaXMdUmew800" class="pricing-cta" id="buyBtn">Get Protected →</a>
       <p class="pricing-remaining"><strong id="spotsLeft">247</strong> of 300 spots remaining</p>
       <p style="font-size:11px; color:#8A8680; text-align:center; margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto; line-height:1.6;">By purchasing you agree to our <a href="/terms.html" style="color:#8A8680; text-decoration:underline;">Terms of Service</a>, <a href="/privacy.html" style="color:#8A8680; text-decoration:underline;">Privacy Policy</a>, and <a href="/refunds.html" style="color:#8A8680; text-decoration:underline;">Refund Policy</a>.</p>
     </div>
@@ -976,29 +1013,45 @@
         <div class="faq-a">Download the desktop app on your Mac or Windows computer. Log into the accounts you want protected — Gmail, your dating apps, your browser, whatever you choose. Set your check-in timer. Then install the check-in app on your phone.<br><br>Once a day — or once a week, or whatever interval you set — you tap the app to prove you're still here. One tap. One second. Timer resets.<br><br>If you ever stop tapping — because you can't — the desktop app quietly logs into your accounts and deletes everything you configured. No one else has to do anything. No instructions to leave behind. It handles itself.<br><br>Your computer needs to be on and connected to the internet for deletion to run. We recommend keeping it plugged in and set to never sleep.</div>
       </div>
       <div class="faq-item reveal">
-        <div class="faq-q">What if I accidentally don't check in?</div>
-        <div class="faq-a">The app sends escalating notifications — push, email, and SMS — as your timer counts down. At 75%, 50%, 25%, and 10% remaining, you'll be reminded. A trusted contact can also be notified before deletion fires. Plus, there's a configurable grace period and a 60-second abort countdown on your desktop before anything gets deleted.</div>
+        <div class="faq-q">What happens if I accidentally miss a check-in?</div>
+        <div class="faq-a">Nothing happens immediately. The app sends escalating notifications — push, email, and SMS — at 75%, 50%, 25%, and 10% of your timer remaining. After your timer expires there's a configurable grace period (we recommend 2 hours) before anything starts. During that grace period a 60-second visible abort countdown runs on your desktop before any deletion begins. You have multiple chances to stop it.</div>
       </div>
+
       <div class="faq-item reveal">
-        <div class="faq-q">Is my data safe?</div>
-        <div class="faq-a">Your credentials never leave your machine. They're encrypted by your operating system's built-in security (macOS Keychain / Windows Credential Manager). Our servers only store the timestamp of your last check-in. We can't access your accounts even if we wanted to.</div>
+        <div class="faq-q">Is my data safe? Who can see my accounts?</div>
+        <div class="faq-a">Nobody but you. Your passwords and login sessions are stored on your machine, encrypted by your operating system's built-in security — macOS Keychain or Windows Credential Manager. Our servers store exactly one thing: the timestamp of your last check-in. We never see your credentials. We never access your accounts. Everything runs locally on your desktop. We literally cannot access your data even if we wanted to.</div>
       </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What if the app fails to delete something?</div>
+        <div class="faq-a">We run daily automated tests against every supported platform to catch issues before they affect you. When a platform changes their interface, we push a script update that applies instantly — no app update needed on your end. That said, no software is perfect. Platforms can change overnight, block automation, or behave unexpectedly. This is why we recommend using DAID alongside other privacy measures and maintaining awareness that deletion is designed to attempt, not guaranteed to complete on every platform every time.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Does my computer need to be on?</div>
+        <div class="faq-a">Yes. The deletion engine runs from your desktop, so your computer needs to be powered on and connected to the internet when your timer expires. We recommend keeping it plugged in and set to never sleep. DAID launches automatically on startup so it's always running in the background.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Will this hold up legally?</div>
+        <div class="faq-a">DAID automates actions you have the legal right to perform yourself — deleting your own accounts and data. It's functionally identical to sitting down and clicking "Delete Account" yourself, just automated. You should not use DAID to destroy evidence subject to any legal hold, litigation, or investigation. Our Terms of Service cover this explicitly. For questions about your specific legal situation, consult an attorney.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What platforms are supported?</div>
+        <div class="faq-a">At launch: browser history, AI chat history (ChatGPT, Claude, Gemini, Grok), Gmail, Google Drive, Google Photos, Google Search and YouTube history, location history, saved passwords, local files, Instagram DMs, Tinder, Bumble, OkCupid, Ashley Madison, and Grindr. Facebook, Twitter/X, TikTok, Reddit, and more are coming in subsequent releases.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What's the refund policy?</div>
+        <div class="faq-a">14-day satisfaction guarantee. If the product doesn't work as described on a supported platform within 14 days of purchase, contact us for a full refund. Full details at <a href="/refunds.html" style="color:var(--red);">deleteafteridie.com/refunds</a>.</div>
+      </div>
+
       <div class="faq-item reveal">
         <div class="faq-q">What about my phone? Can it delete iPhone apps?</div>
         <div class="faq-a">The deletion engine runs from your desktop computer. It reaches your online accounts (Gmail, Instagram, dating apps, etc.) through your web browser sessions. Some content that exists only on your physical phone — like iMessage texts or your camera roll — is out of reach for any software. We'll show you how to organize your digital life so the important stuff is in places we can protect.</div>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">Does my computer need to be on?</div>
-        <div class="faq-a">Yes. The deletion engine runs from your desktop, so your computer needs to be powered on and connected to the internet for deletion to execute. We recommend keeping your computer plugged in and set to "never sleep." Your local files are already gone if your computer is destroyed — the app handles cloud account cleanup.</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">What if a platform changes their website?</div>
-        <div class="faq-a">Our deletion scripts update automatically from the cloud — no app update needed on your end. When a platform makes changes, we push a fix that applies instantly to all users. We run daily tests against every supported platform to catch issues before you ever notice them.</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">Is this legal?</div>
-        <div class="faq-a">Yes. You're using browser automation to exercise your existing right to delete your own accounts and data. It's functionally identical to you sitting down and clicking "Delete Account" yourself — just automated. We provide a privacy tool, not a service.</div>
-      </div>
+
       <div class="faq-item reveal">
         <div class="faq-q">What's a "Founding Member"?</div>
         <div class="faq-a">The first 300 customers get lifetime access for a one-time payment of $129. After that, the product moves to annual pricing ($99/year). Founding members keep lifetime access to all v1 features and maintenance updates. New platforms added later may be part of a premium tier.</div>
@@ -1024,7 +1077,7 @@
         </div>
         <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a personal trainer in San Diego who had a conversation I couldn't stop thinking about.</p>
         <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client told me she went through her husband's phone a few days before the funeral, just to find a photo to share at his memorial. What she found didn't just break her heart — it rewrote every memory she had of him. She looked at me and said: <em style="color:var(--red);">"I found everything. And now I have to figure out how to grieve someone I'm not sure I actually knew."</em></p>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I spent over a year building Delete After I Die with AI tools. I'm offering it to the first 300 people who believe their digital life deserves the same privacy as their physical one.</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I built Delete After I Die because I believe your digital life deserves the same privacy as your physical one.</p>
       </div>
     </div>
   </div>
