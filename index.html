@@ -283,7 +283,7 @@
     object-fit: contain;
   }
   .logo-divider-line-left {
-    width: 24px;
+    flex: 1;
     height: 2px;
     background: var(--red);
     flex-shrink: 0;
@@ -295,7 +295,7 @@
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--red);
-    padding: 0 16px;
+    padding: 0 20px;
     flex-shrink: 0;
     white-space: nowrap;
   }
@@ -1068,21 +1068,21 @@
 <!-- ABOUT THE FOUNDER -->
 <section class="section" id="founder">
   <div class="container">
-    <div style="max-width:680px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap;">
-      <div style="flex-shrink:0;text-align:center;">
-        <img src="/brad.jpg" alt="Brad Yeager, founder of Delete After I Die" style="width:120px;height:120px;border-radius:50%;border:2px solid #C83A3A;object-fit:cover;object-position:center top;display:block;margin:0 auto 12px;background:#0C0C10;">
+    <div class="logo-divider reveal" style="margin-bottom:24px;">
+      <img src="/logo.png" alt="">
+      <div class="logo-divider-line-left"></div>
+      <span class="logo-divider-label">Why I Built This</span>
+      <div class="logo-divider-line-right"></div>
+    </div>
+    <div style="display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap;width:100%;">
+      <div style="flex-shrink:0;text-align:center;min-width:140px;">
+        <img src="/brad.jpg" alt="Brad Yeager, founder of Delete After I Die" style="width:120px;height:120px;border-radius:50%;border:2px solid #C83A3A;object-fit:cover;object-position:center top;display:block;margin:0 auto 12px;">
         <p style="font-size:13px;color:#8A8680;margin:0;font-weight:500;">Brad Yeager</p>
         <p style="font-size:12px;color:#8A8680;margin:4px 0 0;opacity:0.6;">San Diego, CA</p>
       </div>
-      <div style="flex:1;min-width:260px;">
-        <div class="logo-divider" style="margin-bottom:12px;">
-          <img src="/logo.png" alt="">
-          <div class="logo-divider-line-left"></div>
-          <span class="logo-divider-label">Why I Built This</span>
-          <div class="logo-divider-line-right"></div>
-        </div>
+      <div style="flex:1;min-width:280px;">
         <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a personal trainer in San Diego who had a conversation I couldn't stop thinking about.</p>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client told me she went through her husband's phone a few days before the funeral, just to find a photo to share at his memorial. What she found didn't just break her heart — it rewrote every memory she had of him. She looked at me and said: <em style="color:var(--red);">"I found everything. And now I have to figure out how to grieve someone I'm not sure I actually knew."</em></p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client told me she went through her husband's phone a few days before the funeral, just to find a photo to share at his memorial. What she found didn't just break her heart — it rewrote every memory she had of him. She looked at me and said: <em style="color:#C83A3A;">"I found everything. And now I have to figure out how to grieve someone I'm not sure I actually knew."</em></p>
         <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I built Delete After I Die because I believe your digital life deserves the same privacy as your physical one.</p>
       </div>
     </div>
