@@ -262,6 +262,34 @@
     margin-bottom: 16px;
   }
 
+  .logo-divider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .logo-divider img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    margin-right: 0;
+  }
+  .logo-divider-line {
+    flex: 1;
+    height: 2px;
+    background: var(--red);
+    margin-left: 12px;
+  }
+  .logo-divider-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-left: 16px;
+    flex-shrink: 0;
+  }
+
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(36px, 6vw, 64px);
@@ -764,7 +792,11 @@
     <div style="display:flex;gap:60px;align-items:flex-start;flex-wrap:wrap;">
 
       <div style="flex:1;min-width:300px;">
-        <div class="section-label reveal" style="display:flex;align-items:center;gap:10px;"><img src="/logo.png" alt="" style="width:67px;height:67px;border-radius:10px;opacity:0.9;">How It Works</div>
+        <div class="logo-divider reveal">
+          <img src="/logo.png" alt="">
+          <div class="logo-divider-line"></div>
+          <span class="logo-divider-label">How It Works</span>
+        </div>
         <h2 class="section-title reveal">Three steps.<br>Ten minutes.<br><span style="color:var(--red);">Permanent</span> peace of mind.</h2>
         <div class="steps">
           <div class="step reveal">
@@ -832,7 +864,11 @@
 <!-- WHAT IT DELETES -->
 <section class="section" id="what">
   <div class="container">
-    <div class="section-label reveal" style="display:flex;align-items:center;gap:10px;"><img src="/logo.png" alt="" style="width:67px;height:67px;border-radius:10px;opacity:0.9;">What It Protects</div>
+    <div class="logo-divider reveal">
+      <img src="/logo.png" alt="">
+      <div class="logo-divider-line"></div>
+      <span class="logo-divider-label">What It Protects</span>
+    </div>
     <h2 class="section-title reveal"><span style="color:var(--red);">Your</span> entire digital <span style="color:var(--red);">life.</span><br><span style="color:var(--red);">One</span> dead man's <span style="color:var(--red);">switch.</span></h2>
     <div class="deletes-grid">
       <div class="delete-item reveal"><div class="delete-icon">🌐</div><div><div class="name">Browser History</div><div class="type">History, autofill, cookies</div></div></div>
@@ -880,6 +916,9 @@
       <div class="pricing-badge">Founding Member — Lifetime Access</div>
       <div class="pricing-price"><sup>$</sup>129</div>
       <div class="pricing-term">One-time payment. Lifetime protection. No subscription.</div>
+      <div style="font-size:12px;color:#8A8680;margin-top:8px;margin-bottom:4px;line-height:1.6;border-top:1px solid var(--border);padding-top:12px;">
+        <span style="color:var(--red);font-weight:600;">Pre-launch pricing.</span> The app is in development. Founding members receive full access when v1 ships — estimated <strong style="color:var(--bone);">August 2026</strong>. You're locking in lifetime pricing before we go public.
+      </div>
       <ul class="pricing-features">
         <li>Browser history, AI chat history, search history wipe</li>
         <li>Gmail, Google Photos, Google Drive deletion</li>
@@ -921,7 +960,11 @@
 <!-- FAQ -->
 <section class="section" id="faq">
   <div class="container">
-    <div class="section-label reveal" style="display:flex;align-items:center;gap:10px;"><img src="/logo.png" alt="" style="width:67px;height:67px;border-radius:10px;opacity:0.9;">FAQ</div>
+    <div class="logo-divider reveal">
+      <img src="/logo.png" alt="">
+      <div class="logo-divider-line"></div>
+      <span class="logo-divider-label">FAQ</span>
+    </div>
     <h2 class="section-title reveal">Questions you're<br>already thinking.</h2>
     <div class="faq-list">
       <div class="faq-item reveal">
@@ -974,7 +1017,11 @@
         <p style="font-size:12px;color:#8A8680;margin:4px 0 0;opacity:0.6;">San Diego, CA</p>
       </div>
       <div style="flex:1;min-width:260px;">
-        <div class="section-label" style="margin-bottom:12px;display:flex;align-items:center;gap:10px;"><img src="/logo.png" alt="" style="width:67px;height:67px;border-radius:10px;opacity:0.9;">Why I Built This</div>
+        <div class="logo-divider" style="margin-bottom:12px;">
+          <img src="/logo.png" alt="">
+          <div class="logo-divider-line"></div>
+          <span class="logo-divider-label">Why I Built This</span>
+        </div>
         <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a personal trainer in San Diego who had a conversation I couldn't stop thinking about.</p>
         <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client told me she went through her husband's phone a few days before the funeral, just to find a photo to share at his memorial. What she found didn't just break her heart — it rewrote every memory she had of him. She looked at me and said: <em style="color:var(--red);">"I found everything. And now I have to figure out how to grieve someone I'm not sure I actually knew."</em></p>
         <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;">I spent over a year building Delete After I Die with AI tools. I'm offering it to the first 300 people who believe their digital life deserves the same privacy as their physical one.</p>
