@@ -725,7 +725,11 @@
   }
 
   @media (max-width: 600px) {
-    .hero { padding: 100px 20px 50px; }
+    .hero { padding: 100px 16px 50px; text-align: center; align-items: center; }
+    .hero h1, .hero h2, .hero p, .hero-tagline, .hero-sub, .hero-ctas, .hero-note { text-align: center; width: 100%; }
+    .hero-ctas { justify-content: center; flex-direction: column; align-items: center; }
+    .hero-ctas a { width: 100%; max-width: 320px; text-align: center; justify-content: center; }
+    .hero-tagline { font-size: 11px; letter-spacing: 2px; white-space: nowrap; }
     .section { padding: 40px 20px; }
     .pricing-card { padding: 28px 20px; }
     .deletes-grid { grid-template-columns: 1fr; }
@@ -749,11 +753,11 @@
 <section class="hero">
   <div class="hero-tagline">Everyone has something to hide</div>
 
-  <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);line-height:0.95;letter-spacing:-1px;margin-bottom:0;opacity:0;animation:fadeUp 0.8s ease forwards 0.4s;">
+  <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,9vw,140px);line-height:0.95;letter-spacing:-1px;margin-bottom:0;opacity:0;animation:fadeUp 0.8s ease forwards 0.4s;">
     <span style="color:var(--red);">YOUR</span> DIGITAL <span style="color:var(--red);">SECRETS</span>
   </h1>
 
-  <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);line-height:0.95;letter-spacing:-1px;margin-bottom:32px;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;">
+  <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,9vw,140px);line-height:0.95;letter-spacing:-1px;margin-bottom:32px;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;">
     WON'T <span style="color:var(--red);">DIE</span> WITH <span style="color:var(--red);">YOU.</span>
   </h1>
 
@@ -761,7 +765,7 @@
     Your browser history. Your AI chats. Your email. Your DMs. Your dating apps. Your photos.
   </p>
 
-  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,140px);line-height:0.95;letter-spacing:-1px;color:var(--red);margin-bottom:16px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;">
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,9vw,140px);line-height:0.95;letter-spacing:-1px;color:var(--red);margin-bottom:16px;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;">
     THEY CAN.
   </h2>
 
