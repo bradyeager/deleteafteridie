@@ -273,19 +273,21 @@
     display: flex;
     align-items: center;
     margin-bottom: 24px;
+    width: 100%;
   }
   .logo-divider img {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     border-radius: 8px;
     flex-shrink: 0;
-    margin-right: 0;
+    object-fit: contain;
   }
-  .logo-divider-line {
-    flex: 1;
+  .logo-divider-line-left {
+    width: 24px;
     height: 2px;
     background: var(--red);
-    margin-left: 12px;
+    flex-shrink: 0;
+    margin-top: 6px;
   }
   .logo-divider-label {
     font-size: 12px;
@@ -293,8 +295,15 @@
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--red);
-    margin-left: 16px;
+    padding: 0 16px;
     flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .logo-divider-line-right {
+    flex: 1;
+    height: 2px;
+    background: var(--red);
+    margin-top: 6px;
   }
 
   .section-title {
@@ -801,8 +810,9 @@
       <div style="flex:1;min-width:300px;">
         <div class="logo-divider reveal">
           <img src="/logo.png" alt="">
-          <div class="logo-divider-line"></div>
+          <div class="logo-divider-line-left"></div>
           <span class="logo-divider-label">How It Works</span>
+          <div class="logo-divider-line-right"></div>
         </div>
         <h2 class="section-title reveal">Three steps.<br>Ten minutes.<br><span style="color:var(--red);">Permanent</span> peace of mind.</h2>
         <div class="steps">
@@ -873,8 +883,9 @@
   <div class="container">
     <div class="logo-divider reveal">
       <img src="/logo.png" alt="">
-      <div class="logo-divider-line"></div>
+      <div class="logo-divider-line-left"></div>
       <span class="logo-divider-label">What It Protects</span>
+      <div class="logo-divider-line-right"></div>
     </div>
     <h2 class="section-title reveal"><span style="color:var(--red);">Your</span> entire digital <span style="color:var(--red);">life.</span><br><span style="color:var(--red);">One</span> dead man's <span style="color:var(--red);">switch.</span></h2>
     <div class="deletes-grid">
@@ -992,8 +1003,9 @@
   <div class="container">
     <div class="logo-divider reveal">
       <img src="/logo.png" alt="">
-      <div class="logo-divider-line"></div>
+      <div class="logo-divider-line-left"></div>
       <span class="logo-divider-label">FAQ</span>
+      <div class="logo-divider-line-right"></div>
     </div>
     <h2 class="section-title reveal">Questions you're<br>already thinking.</h2>
     <div class="faq-list">
@@ -1065,8 +1077,9 @@
       <div style="flex:1;min-width:260px;">
         <div class="logo-divider" style="margin-bottom:12px;">
           <img src="/logo.png" alt="">
-          <div class="logo-divider-line"></div>
+          <div class="logo-divider-line-left"></div>
           <span class="logo-divider-label">Why I Built This</span>
+          <div class="logo-divider-line-right"></div>
         </div>
         <p style="font-size:17px;font-weight:300;line-height:1.7;color:#E8E4DE;margin-bottom:16px;">I'm not a software engineer. I'm a personal trainer in San Diego who had a conversation I couldn't stop thinking about.</p>
         <p style="font-size:15px;font-weight:300;line-height:1.7;color:#8A8680;margin-bottom:16px;">A client told me she went through her husband's phone a few days before the funeral, just to find a photo to share at his memorial. What she found didn't just break her heart — it rewrote every memory she had of him. She looked at me and said: <em style="color:var(--red);">"I found everything. And now I have to figure out how to grieve someone I'm not sure I actually knew."</em></p>
