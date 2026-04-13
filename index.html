@@ -730,11 +730,59 @@
     .hero-ctas { justify-content: center; flex-direction: column; align-items: center; }
     .hero-ctas a { width: 100%; max-width: 320px; text-align: center; justify-content: center; }
     .hero-tagline { font-size: 11px; letter-spacing: 2px; white-space: nowrap; }
+    .hero h1 { font-size: clamp(44px, 11vw, 140px) !important; line-height: 0.9; text-align: center !important; }
+    .hero h2 { font-size: clamp(44px, 11vw, 140px) !important; text-align: center !important; }
     .section { padding: 40px 20px; }
     .pricing-card { padding: 28px 20px; }
     .deletes-grid { grid-template-columns: 1fr; }
     .question { padding: 48px 20px; }
     .waitlist { padding: 48px 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero,
+    .hero * {
+      text-align: center !important;
+    }
+
+    .hero {
+      align-items: center !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    .hero-ctas {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+    }
+
+    .hero-ctas a,
+    .hero-ctas button {
+      width: 100% !important;
+      max-width: 340px !important;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+
+    .hero-tagline {
+      font-size: 11px !important;
+      letter-spacing: 2px !important;
+      white-space: nowrap !important;
+      text-align: center !important;
+      width: 100% !important;
+      display: block !important;
+    }
+
+    .hero-sub {
+      text-align: center !important;
+      font-size: 17px !important;
+    }
+
+    .hero-note {
+      text-align: center !important;
+    }
   }
 </style>
 </head>
