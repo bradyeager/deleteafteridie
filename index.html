@@ -722,6 +722,31 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     .steps { grid-template-columns: 1fr; }
+
+    .logo-divider {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .logo-divider img {
+      width: 48px !important;
+      height: 48px !important;
+    }
+
+    .logo-divider-label {
+      font-size: 10px !important;
+      letter-spacing: 2px !important;
+      padding: 0 8px !important;
+      white-space: nowrap;
+    }
+
+    .logo-divider-line-left {
+      min-width: 16px !important;
+    }
+
+    .logo-divider-line-right {
+      min-width: 16px !important;
+    }
   }
 
   @media (max-width: 600px) {
@@ -1161,7 +1186,7 @@
 
 <!-- WAITLIST / EMAIL CAPTURE -->
 <section class="waitlist" id="waitlist">
-  <h2 class="reveal">"They're Going to Go <span style="color:var(--red);">Through Everything."</span></h2>
+  <h2 class="reveal">"They're Going to Go Through <span style="color:var(--red);">Everything."</span></h2>
   <p class="reveal"><span style="color:var(--red);font-weight:600;">Get the free guide</span> — what survives you when you die, platform by platform, and exactly how to make sure it doesn't.<br><span style="color:var(--red);font-size:13px;font-weight:600;letter-spacing:1px;">No spam. Unsubscribe anytime.</span></p>
   <form class="email-form reveal" id="emailForm">
     <input type="email" placeholder="Your email address" required id="emailInput">
