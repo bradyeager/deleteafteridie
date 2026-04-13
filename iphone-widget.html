@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAID iPhone Widget</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: transparent; display: flex; justify-content: center; align-items: center; }
+  .daid-phone-container {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    overflow: hidden;
+  }
+  .daid-phone-container img {
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+  .daid-num {
+    position: absolute;
+    top: 72.6px;
+    width: 28.1px;
+    height: 20.4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 27.9px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .daid-hours { left: 99.9px; color: #E8E4DE; }
+  .daid-minutes { left: 145.8px; color: #E8E4DE; }
+  .daid-seconds { left: 191.7px; color: #C83A3A; }
+</style>
+</head>
+<body>
+<div class="daid-phone-container">
+  <img src="/iphone-mockup.png" alt="DAID iPhone Mockup" />
+  <div class="daid-num daid-hours" id="daid-hrs">06</div>
+  <div class="daid-num daid-minutes" id="daid-min">47</div>
+  <div class="daid-num daid-seconds" id="daid-sec">32</div>
+</div>
+<script>
+(function() {
+  var hrsEl = document.getElementById('daid-hrs');
+  var minEl = document.getElementById('daid-min');
+  var secEl = document.getElementById('daid-sec');
+  var totalSeconds = 6 * 3600 + 47 * 60 + 32;
+  function update() {
+    var h = Math.floor(totalSeconds / 3600);
+    var m = Math.floor((totalSeconds % 3600) / 60);
+    var s = totalSeconds % 60;
+    hrsEl.textContent = String(h).padStart(2, '0');
+    minEl.textContent = String(m).padStart(2, '0');
+    secEl.textContent = String(s).padStart(2, '0');
+    totalSeconds--;
+    if (totalSeconds < 0) totalSeconds = 12 * 3600;
+  }
+  update();
+  setInterval(update, 1000);
+})();
+</script>
+</body>
+</html>
