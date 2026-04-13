@@ -12,7 +12,8 @@
     position: relative;
     width: 320px;
     height: 400px;
-    overflow: hidden;
+    overflow: visible;
+    transform-origin: top center;
   }
   .daid-phone-container img {
     width: 320px;
@@ -65,6 +66,23 @@
   }
   update();
   setInterval(update, 1000);
+})();
+</script>
+<script>
+(function() {
+  function scaleWidget() {
+    var container = document.querySelector('.daid-phone-container');
+    if (!container) return;
+    var frameW = window.innerWidth;
+    var frameH = window.innerHeight;
+    var scaleX = frameW / 320;
+    var scaleY = frameH / 400;
+    var scale = Math.min(scaleX, scaleY);
+    container.style.transform = 'scale(' + scale + ')';
+    container.style.marginLeft = ((frameW - 320) / 2) + 'px';
+  }
+  scaleWidget();
+  window.addEventListener('resize', scaleWidget);
 })();
 </script>
 </body>

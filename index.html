@@ -816,6 +816,20 @@
       padding: 0 16px !important;
     }
   }
+
+  @media (min-width: 769px) {
+    #iphone-widget-frame {
+      width: 440px !important;
+      height: 550px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #iphone-widget-frame {
+      width: 300px !important;
+      height: 375px !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -934,7 +948,7 @@
 
       <div style="flex-shrink:0;text-align:center;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding-top:0;" class="reveal">
         <p style="font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Check-In App</p>
-        <iframe src="/iphone-widget.html" width="320" height="400" frameborder="0" scrolling="no" style="display:block;margin:0 auto;border:none;background:transparent;"></iframe>
+        <iframe src="/iphone-widget.html" id="iphone-widget-frame" frameborder="0" scrolling="no" style="display:block;margin:0 auto;border:none;background:transparent;width:320px;height:400px;"></iframe>
       </div>
 
     </div>
