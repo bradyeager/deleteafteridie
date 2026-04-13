@@ -937,7 +937,7 @@
 
         <div style="position:relative;display:inline-block;max-width:320px;margin:0 auto;">
           <img src="/iphone-mockup.png" alt="Delete After I Die check-in app on iPhone showing live countdown timer" style="width:100%;display:block;border-radius:0;" id="iphoneMockupImg">
-          <div id="phone-secs-overlay" style="position:absolute;top:26%;left:70%;transform:translateX(-50%);font-family:'Arial Narrow',Arial,sans-serif;font-size:clamp(10px,4.2vw,24px);font-weight:700;color:#C83A3A;line-height:1;letter-spacing:-0.5px;pointer-events:none;user-select:none;z-index:10;">32</div>
+          <div id="phone-secs-overlay" style="position:absolute;top:0;left:0;font-family:'Arial Narrow',Arial,sans-serif;font-weight:700;color:#C83A3A;line-height:1;letter-spacing:-0.5px;pointer-events:none;user-select:none;z-index:10;display:none;">59</div>
         </div>
 
       </div>
@@ -1329,27 +1329,54 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   setInterval(tick, 1000);
 })();
 
-// Phone mockup live seconds overlay
+// Phone mockup pixel-positioned seconds overlay
 (function() {
-  var totalSeconds = (6 * 3600) + (47 * 60) + 32;
-  var startTime = Date.now();
+  var overlay = document.getElementById('phone-secs-overlay');
+  var img = document.getElementById('iphoneMockupImg');
+  if (!overlay || !img) return;
 
-  function tickPhoneOverlay() {
-    var elapsed = Math.floor((Date.now() - startTime) / 1000);
-    var remaining = Math.max(0, totalSeconds - elapsed);
-    if (remaining <= 0) {
-      startTime = Date.now();
-      totalSeconds = 12 * 3600;
-      return;
-    }
-    var s = remaining % 60;
-    function p(n) { return String(n).padStart(2, '0'); }
-    var el = document.getElementById('phone-secs-overlay');
-    if (el) el.textContent = p(s);
+  var X_RATIO = 0.745;
+  var Y_RATIO = 0.255;
+  var FONT_RATIO = 0.052;
+
+  function positionOverlay() {
+    var rect = img.getBoundingClientRect();
+    var containerRect = img.parentElement.getBoundingClientRect();
+    var imgW = rect.width;
+    var imgH = rect.height;
+    var imgLeft = rect.left - containerRect.left;
+    var imgTop = rect.top - containerRect.top;
+
+    var x = imgLeft + (imgW * X_RATIO);
+    var y = imgTop + (imgH * Y_RATIO);
+    var fontSize = Math.round(imgH * FONT_RATIO);
+
+    overlay.style.fontSize = fontSize + 'px';
+    overlay.style.left = x + 'px';
+    overlay.style.top = y + 'px';
+    overlay.style.transform = 'translate(-50%, -50%)';
+    overlay.style.display = 'block';
   }
 
-  tickPhoneOverlay();
-  setInterval(tickPhoneOverlay, 1000);
+  function p(n) { return String(n).padStart(2, '0'); }
+  var startTime = Date.now();
+
+  function tick() {
+    var elapsed = Math.floor((Date.now() - startTime) / 1000);
+    var s = 59 - (elapsed % 60);
+    if (s < 0) s = 59;
+    overlay.textContent = p(s);
+  }
+
+  if (img.complete) {
+    positionOverlay();
+  } else {
+    img.addEventListener('load', positionOverlay);
+  }
+
+  window.addEventListener('resize', positionOverlay);
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 
