@@ -935,11 +935,10 @@
       <div style="flex-shrink:0;text-align:center;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding-top:0;" class="reveal">
         <p style="font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Check-In App</p>
 
-        <div style="position:relative;display:inline-block;max-width:320px;margin:0 auto;">
-          <img src="/iphone-mockup.png" alt="Delete After I Die check-in app on iPhone showing live countdown timer" style="width:100%;display:block;border-radius:0;" id="iphoneMockupImg">
-          <div id="phone-secs-overlay" style="position:absolute;left:59.91%;top:18.15%;width:8.80%;height:5.11%;display:flex;align-items:center;justify-content:center;font-family:'Roboto Condensed','Arial Narrow',Arial,sans-serif;font-weight:700;font-size:clamp(10px, 4.1vw, 22px);color:#C83A3A;line-height:1;pointer-events:none;user-select:none;z-index:10;">59</div>
+        <div style="position:relative;width:320px;height:400px;display:inline-block;margin:0 auto;">
+          <img src="/iphone-mockup.png" alt="DAID iPhone check-in app" style="width:320px;height:400px;display:block;">
+          <div id="daid-seconds" style="position:absolute;left:192px;top:73px;width:28px;height:20px;display:flex;align-items:center;justify-content:center;font-family:'Roboto Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:28px;line-height:1;color:#C83A3A;pointer-events:none;user-select:none;">32</div>
         </div>
-
       </div>
 
     </div>
@@ -1331,18 +1330,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // Phone mockup 59-second timer
 (function() {
-  var overlay = document.getElementById('phone-secs-overlay');
-  if (!overlay) return;
-  function p(n) { return String(n).padStart(2, '0'); }
-  var startTime = Date.now();
-  function tick() {
-    var elapsed = Math.floor((Date.now() - startTime) / 1000);
-    var s = 59 - (elapsed % 60);
-    if (s < 0) s = 59;
-    overlay.textContent = p(s);
+  var el = document.getElementById('daid-seconds');
+  if (!el) return;
+  var seconds = 59;
+  function update() {
+    el.textContent = String(seconds).padStart(2, '0');
+    seconds--;
+    if (seconds < 0) seconds = 59;
   }
-  tick();
-  setInterval(tick, 1000);
+  update();
+  setInterval(update, 1000);
 })();
 </script>
 
